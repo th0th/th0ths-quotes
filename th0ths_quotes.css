@@ -35,10 +35,12 @@ div#th0ths_quotes_new_quote {
 }
 
 div#th0ths_quotes_new_quote input {
+	margin-top: 6px;
 	margin-bottom: 14px;
 }
 
 div#th0ths_quotes_new_quote textarea {
+	margin-top: 8px;
 	margin-bottom: 14px;
 	width: 460px;
 	height: 60px;
