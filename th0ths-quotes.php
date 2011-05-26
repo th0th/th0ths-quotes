@@ -86,8 +86,11 @@ function th0ths_quotes_add_administration_menus()
     /* add menu item */
     add_menu_page("th0th's Quotes", "th0th's Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
     
-    /* add submenu item */
-    add_submenu_page("th0ths-quotes", "th0th's Quotes", "th0th's Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
+    /* add quote management submenu item */
+    add_submenu_page("th0ths-quotes", "Manage Quotes", "Manage Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
+    
+    /* add trash submenu item */
+    add_submenu_page("th0ths-quotes", "Trash", "Trash", "manage_options", "th0ths-quotes-trash", "th0ths_quotes_trash");
 }
 
 /* Adding CSS */
@@ -118,7 +121,11 @@ function th0ths_quotes_manage_quotes()
 			}
 			else
 			{
-				echo "error";
+				?>
+				<script type="text/javascript">
+					alert('You should fill both quote and owner sections.');
+				</script>
+				<?php
 			}
 		}
 		elseif ($_POST['action'] == 'delQuote')
@@ -180,6 +187,12 @@ function th0ths_quotes_manage_quotes()
     </div>
     
     <?php
+}
+
+/* trash management function */
+function th0ths_quotes_trash()
+{
+	echo "<h2>" . __("Trash") . "</h2>";
 }
 
 
