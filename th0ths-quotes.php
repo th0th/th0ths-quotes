@@ -139,7 +139,7 @@ function th0ths_quotes_manage_quotes()
 	
 	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", 'ARRAY_A');
 	
-    echo "<h2>" . __("th0th's Quotes Management") . "</h2>";
+    echo "<h2>" . __("Manage Quotes") . "</h2>";
     ?>
     
     <div class="wrap">
