@@ -81,10 +81,10 @@ function th0ths_quotes_admin_head_js()
 function th0ths_quotes_add_administration_menus()
 {
     /* add menu item */
-    add_menu_page("th0th's Quotes", "th0th's Quotes", "manage_options", "th0ths_quotes", "th0ths_quotes_manage_quotes");
+    add_menu_page("th0th's Quotes", "th0th's Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
     
     /* add submenu item */
-    add_submenu_page("th0ths_quotes", "th0th's Quotes", "th0th's Quotes", "manage_options", "th0ths_quotes", "th0ths_quotes_manage_quotes");
+    add_submenu_page("th0ths-quotes", "th0th's Quotes", "th0th's Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
 }
 
 /* Adding CSS */
