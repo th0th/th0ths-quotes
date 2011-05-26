@@ -108,7 +108,7 @@ function th0ths_quotes_manage_quotes()
 	
 	if (!empty($_POST)) /* Action can be both add or delete */
 	{
-		if ($_POST['action'] == 'addQuote')
+		if ($_POST['action'] == 'Add')
 		{
 			$new_quote = array (
 				'quote' => $_POST['quote'],
@@ -128,11 +128,11 @@ function th0ths_quotes_manage_quotes()
 				<?php
 			}
 		}
-		elseif ($_POST['action'] == 'delQuote')
+		elseif ($_POST['action'] == 'Send Selected Quotes to Trash')
 		{
-			foreach ($_POST['delQuoteID'] as $id)
+			foreach ($_POST['quoteIDs'] as $id)
 			{
-				$wpdb->query("DELETE FROM $th0ths_quotes_plugin_table WHERE id = '$id'");
+				$wpdb->update($th0ths_quotes_plugin_table, array('status' => '0'), array( 'id' => $id ));
 			}
 		}
 	}
@@ -148,21 +148,20 @@ function th0ths_quotes_manage_quotes()
 				<table id="th0ths_quotes_qlist" class="widefat">
 					<thead>
 						<tr>
-							<th class="deleteLink"><input type="checkbox" onClick="checkAll('delQuoteCB',this)" /></th>
+							<th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
 							<th>Quote</th>
 							<th>Owner</th>
 						</tr>
 						<?php foreach ($quotes as $quote) { ?>
 						<tr>
-							<td class="deleteLink"><input type="checkbox" class="delQuoteCB" name="delQuoteID[]" value="<?php echo $quote['id']; ?>" /></td>
+							<td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
 							<td class="quote"><?php echo $quote['quote']; ?></td>
 							<td class="owner"><?php echo $quote['owner']; ?></td>
 						</tr>
 						<?php } ?>
 					</thead>
 				</table>
-				<input type="hidden" name="action" value="delQuote" />
-				<input class="button" type="submit" value="Delete Selected Quotes" />
+				<input name="action" class="button" type="submit" value="Send Selected Quotes to Trash" />
 			</form>
 		</div>
 		<form method="post">
@@ -180,8 +179,7 @@ function th0ths_quotes_manage_quotes()
 				<input type="text" name="owner" />
 				<div class="th0ths_quotes_cleanser"></div>
 				
-				<input type="hidden" name="action" value="addQuote" />
-				<input class="button" type="submit" value="Add" />
+				<input name="action" class="button" type="submit" value="Add" />
 			</div>
 		</form>
     </div>
