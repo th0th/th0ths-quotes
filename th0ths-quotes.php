@@ -83,8 +83,11 @@ function th0ths_quotes_add_administration_menus()
     /* add menu item */
     add_menu_page("th0th's Quotes", "th0th's Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
     
-    /* add submenu item */
-    add_submenu_page("th0ths-quotes", "th0th's Quotes", "th0th's Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
+    /* add quote management submenu item */
+    add_submenu_page("th0ths-quotes", "Manage Quotes", "Manage Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
+    
+    /* add trash submenu item */
+    add_submenu_page("th0ths-quotes", "Trash", "Trash", "manage_options", "th0ths-quotes-trash", "th0ths_quotes_trash");
 }
 
 /* Adding CSS */
@@ -129,7 +132,7 @@ function th0ths_quotes_manage_quotes()
 	
 	$quotes = $wpdb->get_results('SELECT * FROM ' . $th0ths_quotes_plugin_table, 'ARRAY_A');
 	
-    echo "<h2>" . __("th0th's Quotes Management") . "</h2>";
+    echo "<h2>" . __("Manage Quotes") . "</h2>";
     ?>
     
     <div class="wrap">
@@ -177,6 +180,11 @@ function th0ths_quotes_manage_quotes()
     </div>
     
     <?php
+}
+
+function th0ths_quotes_trash()
+{
+	echo "<h2>" . __("Trash") . "</h2>";
 }
 
 
