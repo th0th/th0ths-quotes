@@ -6,12 +6,12 @@ div#th0ths_quotes_edit_quotes input.button {
 	margin-top: 14px;
 }
 
-table#th0ths_quotes_qlist th.deleteLink {
+table#th0ths_quotes_qlist th.sendToTrash {
 	width: 20px;
 	text-align: center;
 }
 
-table#th0ths_quotes_qlist th.deleteLink input {
+table#th0ths_quotes_qlist th.sendToTrash input {
 	margin-left: 2px;
 }
 
@@ -23,7 +23,7 @@ table#th0ths_quotes_qlist td.owner {
 	text-align: left;
 }
 
-table#th0ths_quotes_qlist td.deleteLink {
+table#th0ths_quotes_qlist td.sendToTrash {
 	width:20px;
 	text-align: center;
 	font-weight: bold;

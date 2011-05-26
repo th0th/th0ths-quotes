@@ -25,7 +25,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
 		global $wpdb, $th0ths_quotes_plugin_table;
         extract( $args );
         $title = apply_filters('widget_title', $instance['title']);
-        $quotes = $wpdb->get_results('SELECT * FROM ' . $th0ths_quotes_plugin_table, 'ARRAY_A');
+        $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", 'ARRAY_A');
         $quote = $quotes[array_rand($quotes)];
         ?>
               <?php echo $before_widget; ?>
