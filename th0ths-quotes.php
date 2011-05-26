@@ -66,7 +66,7 @@ function th0ths_quotes_activate()
             $row = $wpdb->insert($th0ths_quotes_plugin_table, $quote);
         }
         
-        add_option("th0ths_quotes_version", "0.1");
+        add_option("th0ths_quotes_version", "0.2");
     }
 }
 
@@ -74,7 +74,7 @@ function th0ths_quotes_activate()
 function th0ths_quotes_admin_head_js()
 {
 	?>
-<script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/th0ths_quotes/admin_head.js"></script>
+<script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/admin-head.js"></script>
 <?php }
 
 /* Administration menus */
@@ -91,7 +91,7 @@ function th0ths_quotes_add_administration_menus()
 function th0ths_quotes_include_css()
 {
     ?>
-    <link rel="stylesheet" type="text/css" media="all" href="<?php echo WP_PLUGIN_URL; ?>/th0ths_quotes/th0ths_quotes.css" />
+    <link rel="stylesheet" type="text/css" media="all" href="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/th0ths-quotes.css" />
     <?php
 }
 
@@ -192,6 +192,6 @@ add_action('admin_head', 'th0ths_quotes_include_css');
 /* add js to admin_head */
 add_action('admin_head', 'th0ths_quotes_admin_head_js');
 
-include "th0ths_quotes_widget.php";
+include "th0ths-quotes-widget.php";
 
 ?>
