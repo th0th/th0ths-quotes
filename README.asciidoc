@@ -40,4 +40,5 @@ A widget plugin that shows random quotes from your own collection.
 
 == More ==
 
-This plugin is originally hosted on github. So you can check there as well if you want. (https://github.com/th0th/th0ths-quotes)
+* This plugin is originally hosted on github. So you can check there as well if you want. (https://github.com/th0th/th0ths-quotes)
+* You can contact me via e-mail or jabber (my address for both is th0th -at- returnfalse.net).
