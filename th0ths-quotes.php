@@ -28,13 +28,15 @@ License: GPL3
 
 global $wpdb;
 global $th0ths_quotes_plugin_table;
+global $th0ths_quotes_plugin_version;
 
 $th0ths_quotes_plugin_table = $wpdb->prefix . "th0ths_quotes";
+$th0ths_quotes_plugin_version = '0.3';
 
 /* Plugin activation function */
 function th0ths_quotes_activate()
 {
-    global $wpdb, $th0ths_quotes_plugin_table;
+    global $wpdb, $th0ths_quotes_plugin_table, $th0ths_quotes_plugin_version;
     
     if($wpdb->get_var("SHOW TABLES LIKE '$th0ths_quotes_plugin_table'") != $th0ths_quotes_plugin_table)
     {
@@ -67,7 +69,7 @@ function th0ths_quotes_activate()
             $row = $wpdb->insert($th0ths_quotes_plugin_table, $quote);
         }
         
-        add_option("th0ths_quotes_version", "0.2");
+        add_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
     }
 }
 
