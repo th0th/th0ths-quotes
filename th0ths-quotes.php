@@ -42,6 +42,7 @@ function th0ths_quotes_activate()
           id INT(12) NOT NULL AUTO_INCREMENT,
           quote VARCHAR(255) NOT NULL,
           owner VARCHAR(100) NOT NULL,
+          status INT(4) DEFAULT '1',
           UNIQUE KEY id (id)
         );";
         
