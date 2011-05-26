@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: th0th's quotes
-Plugin URI: http://URI_Of_Page_Describing_Plugin_and_Updates
+Plugin URI: https://returnfalse.net/log/
 Description: Widget for displaying random quotes from your collection.
 Version: 0.3
 Author: H.Gökhan Sarı
