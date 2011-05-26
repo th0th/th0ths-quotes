@@ -192,6 +192,24 @@ function th0ths_quotes_trash()
 {
 	global $wpdb, $th0ths_quotes_plugin_table;
 	
+	if (!empty($_POST))
+	{
+		if ($_POST['action'] == 'Restore Selected Quotes')
+		{
+			foreach ($_POST['quoteIDs'] as $id)
+			{
+				$wpdb->update($th0ths_quotes_plugin_table, array('status' => '1'), array( 'id' => $id ));
+			}
+		}
+		elseif ($_POST['action'] == 'Delete Selected Quotes Permanently')
+		{
+			foreach ($_POST['quoteIDs'] as $id)
+			{
+				$wpdb->query("DELETE FROM $th0ths_quotes_plugin_table WHERE id = '$id'");
+			}
+		}
+	}
+	
 	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '0'", 'ARRAY_A');
 	
     echo "<h2>" . __("Trash") . "</h2>";
