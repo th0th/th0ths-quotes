@@ -12,5 +12,5 @@ You can e-mail me about your thoughts, comments or patches.
 +H. Gökhan SARI <th0th -at- returnfalse.net>+
 
 == RESOURCES ==
-- Github (https://github.com/th0th/th0ths-quotes)
+- Github (https://github.com/th0th/th0ths_quotes)
 - My blog (https://returnfalse.net/log/)
