@@ -76,7 +76,7 @@ function th0ths_quotes_activate()
 /* Plugin upgrade function */
 function th0ths_quotes_upgrade_check()
 {
-	global $wpdb, $th0ths_quotes_plugin_table, $th0ths_quotes_plugin_version;
+	global $th0ths_quotes_plugin_version;
 	
 	$current_version = get_option("th0ths_quotes_version");
 	
@@ -84,6 +84,12 @@ function th0ths_quotes_upgrade_check()
 	{
 		update_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
 	}
+}
+
+/* Plugin deactivation function */
+function th0ths_quotes_deactivate()
+{
+	delete_option("th0ths_quotes_version");
 }
 
 /* JS */
@@ -152,10 +158,10 @@ function th0ths_quotes_manage_quotes()
 	
 	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", 'ARRAY_A');
 	
-    echo "<h2>" . __("Manage Quotes") . "</h2>";
     ?>
     
     <div class="wrap">
+		<h2>Manage Quotes</h2>
 		<div id="th0ths_quotes_edit_quotes">
 			<form method="post" name="edit_quotes">
 				<table id="th0ths_quotes_qlist" class="widefat">
@@ -225,10 +231,10 @@ function th0ths_quotes_trash()
 	
 	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '0'", 'ARRAY_A');
 	
-    echo "<h2>" . __("Trash") . "</h2>";
     ?>
     
     <div class="wrap">
+		<h2>Trash</h2>
 		<div id="th0ths_quotes_edit_quotes">
 			<form method="post" name="edit_quotes">
 				<table id="th0ths_quotes_qlist" class="widefat">
@@ -257,6 +263,7 @@ function th0ths_quotes_trash()
 
 /* registering functions */
 register_activation_hook(__FILE__, 'th0ths_quotes_activate');
+register_deactivation_hook( __FILE__, 'th0ths_quotes_deactivate' );
 
 /* upgrade version check function */
 add_action('plugins_loaded', 'th0ths_quotes_upgrade_check');
