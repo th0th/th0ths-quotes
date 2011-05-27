@@ -13,7 +13,7 @@ License: GPL3
 /*  Copyright 2011 Hüseyin Gökhan Sarı  (email : th0th -at- returnfalse.net)
 
     This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License, version 2, as 
+    it under the terms of the GNU General Public License, version 3, as 
     published by the Free Software Foundation.
 
     This program is distributed in the hope that it will be useful,
@@ -71,6 +71,19 @@ function th0ths_quotes_activate()
         
         add_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
     }
+}
+
+/* Plugin upgrade function */
+function th0ths_quotes_upgrade_check()
+{
+	global $wpdb, $th0ths_quotes_plugin_table, $th0ths_quotes_plugin_version;
+	
+	$current_version = get_option("th0ths_quotes_version");
+	
+	if ($current_version != $th0ths_quotes_plugin_version)
+	{
+		update_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
+	}
 }
 
 /* JS */
@@ -244,6 +257,9 @@ function th0ths_quotes_trash()
 
 /* registering functions */
 register_activation_hook(__FILE__, 'th0ths_quotes_activate');
+
+/* upgrade version check function */
+add_action('plugins_loaded', 'th0ths_quotes_upgrade_check');
 
 /* registering administration options */
 add_action('admin_menu', 'th0ths_quotes_add_administration_menus');
