@@ -10,7 +10,7 @@ A widget plugin that shows random quotes from your own collection.
 
 == Description ==
 
-*th0th's Quotes* is a plugin containing a widget that show a random quote from your collection. You can manage your quote collection from administration panel of your Wordpress.
+*th0th's Quotes* is a widget that shows a random quote from your collection. You can manage your quote collection from administration panel of your Wordpress.
 
 == Installation ==
 
@@ -39,5 +39,6 @@ A widget plugin that shows random quotes from your own collection.
 
 == More ==
 
+* You can support development of this plugin by donations. (https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JYSYCB2U4FTKE)
 * This plugin is originally hosted on github. So you can check there as well if you want. (https://github.com/th0th/th0ths-quotes)
 * You can contact me via e-mail or jabber (my address for both is th0th -at- returnfalse.net).
