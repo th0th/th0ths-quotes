@@ -45,5 +45,6 @@ A widget plugin that shows random quotes from your own collection.
 
 == More ==
 
+* You can support development of this plugin by donations. (https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JYSYCB2U4FTKE)
 * This plugin is originally hosted on github. So you can check there as well if you want. (https://github.com/th0th/th0ths-quotes)
 * You can contact me via e-mail or jabber (my address for both is th0th -at- returnfalse.net).
