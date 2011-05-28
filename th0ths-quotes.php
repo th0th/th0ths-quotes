@@ -209,6 +209,7 @@ function th0ths_quotes_manage_quotes()
     <?php
 }
 
+/* import/export page */
 function th0ths_quotes_import_export()
 {
     ?>
@@ -229,7 +230,26 @@ function th0ths_quotes_import_export()
             <span>Click here to export quotes</span>
         </div>
     </div>
+    <br /><br />
     <?php
+    th0ths_quotes_export_n_download();
+}
+
+/* exporting quotes to xml */
+function th0ths_quotes_export_n_download()
+{
+    global $wpdb, $th0ths_quotes_plugin_table;
+    
+    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+    
+    echo "<pre>";
+    echo htmlentities("<?xml version=\"1.0\"?>");
+    echo htmlentities("<quotes>");
+
+    foreach ($quotes as $quote) {
+        echo "hi";
+    }
+    echo "</pre>";
 }
 
 /* trash management function */
