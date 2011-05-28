@@ -212,6 +212,11 @@ function th0ths_quotes_manage_quotes()
 /* import/export page */
 function th0ths_quotes_import_export()
 {
+    if ($_GET['export'] == 'true')
+    {
+        echo "test";
+        die();
+    }
     ?>
     
     <div class="wrap">
@@ -227,12 +232,17 @@ function th0ths_quotes_import_export()
         </div>
         <h3>Export Quotes</h3>
         <div id="th0ths_quotes_import_quotes">
-            <span>Click here to export quotes</span>
+            <a href="<?php echo add_query_arg("export", "true", admin_url() . "admin.php?page=th0ths-quotes-import-export"); ?>">Click here to export quotes</a>
         </div>
     </div>
     <br /><br />
     <?php
-    th0ths_quotes_export_n_download();
+}
+
+/* export - xml header */
+function th0ths_quotes_export_xml_header()
+{
+    header('Content-disposition: attachment; filename=quotes.xml');
 }
 
 /* exporting quotes to xml */
@@ -241,15 +251,6 @@ function th0ths_quotes_export_n_download()
     global $wpdb, $th0ths_quotes_plugin_table;
     
     $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
-    
-    echo "<pre>";
-    echo htmlentities("<?xml version=\"1.0\"?>");
-    echo htmlentities("<quotes>");
-
-    foreach ($quotes as $quote) {
-        echo "hi";
-    }
-    echo "</pre>";
 }
 
 /* trash management function */
@@ -322,6 +323,11 @@ add_action('admin_head', 'th0ths_quotes_include_css');
 
 /* add js to admin_head */
 add_action('admin_head', 'th0ths_quotes_admin_head_js');
+
+if ($_GET['page'] == 'th0ths-quotes-import-export' && $_GET['export'] == 'true')
+{
+    add_action('admin_init', 'th0ths_quotes_export_xml_header');
+}
 
 include "th0ths-quotes-widget.php";
 
