@@ -4,7 +4,7 @@
 Plugin Name: th0th's quotes
 Plugin URI: https://returnfalse.net/log/
 Description: Widget for displaying random quotes from your collection.
-Version: 0.3
+Version: 0.4
 Author: H.Gökhan Sarı
 Author URI: http://returnfalse.net
 License: GPL3
@@ -31,7 +31,7 @@ global $th0ths_quotes_plugin_table;
 global $th0ths_quotes_plugin_version;
 
 $th0ths_quotes_plugin_table = $wpdb->prefix . "th0ths_quotes";
-$th0ths_quotes_plugin_version = '0.3';
+$th0ths_quotes_plugin_version = '0.4';
 
 /* Plugin activation function */
 function th0ths_quotes_activate()
@@ -107,6 +107,9 @@ function th0ths_quotes_add_administration_menus()
     
     /* add quote management submenu item */
     add_submenu_page("th0ths-quotes", "Manage Quotes", "Manage Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
+    
+    /* add import/export submenu item */
+    add_submenu_page("th0ths-quotes", "Import/Export", "Import/Export", "manage_options", "th0ths-quotes-import-export", "th0ths_quotes_import_export");
     
     /* add trash submenu item */
     add_submenu_page("th0ths-quotes", "Trash", "Trash", "manage_options", "th0ths-quotes-trash", "th0ths_quotes_trash");
@@ -203,6 +206,29 @@ function th0ths_quotes_manage_quotes()
 		</form>
     </div>
     
+    <?php
+}
+
+function th0ths_quotes_import_export()
+{
+    ?>
+    
+    <div class="wrap">
+		<h2>Import/Export</h2>
+        <h3>Import Quotes</h3>
+        <div id="th0ths_quotes_import_quotes" class="postbox">
+            <form method="post" enctype="multipart/form-data">
+                <label for="file">Filename:</label>
+                <input type="file" name="file" id="file" /> 
+                <br />
+                <input type="submit" name="submit" value="Import Quotes" />
+            </form>
+        </div>
+        <h3>Export Quotes</h3>
+        <div id="th0ths_quotes_import_quotes">
+            <span>Click here to export quotes</span>
+        </div>
+    </div>
     <?php
 }
 
