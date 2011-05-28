@@ -212,11 +212,6 @@ function th0ths_quotes_manage_quotes()
 /* import/export page */
 function th0ths_quotes_import_export()
 {
-    if ($_GET['export'] == 'true')
-    {
-        echo "test";
-        die();
-    }
     ?>
     
     <div class="wrap">
@@ -243,6 +238,8 @@ function th0ths_quotes_import_export()
 function th0ths_quotes_export_xml_header()
 {
     header('Content-disposition: attachment; filename=quotes.xml');
+    echo "test";
+    die();
 }
 
 /* exporting quotes to xml */
@@ -324,9 +321,12 @@ add_action('admin_head', 'th0ths_quotes_include_css');
 /* add js to admin_head */
 add_action('admin_head', 'th0ths_quotes_admin_head_js');
 
-if ($_GET['page'] == 'th0ths-quotes-import-export' && $_GET['export'] == 'true')
+if (array_key_exists('page', $_GET) && array_key_exists('export', $_GET))
 {
-    add_action('admin_init', 'th0ths_quotes_export_xml_header');
+    if ($_GET['page'] == 'th0ths-quotes-import-export' && $_GET['export'] == 'true')
+    {
+        add_action('admin_init', 'th0ths_quotes_export_xml_header');
+    }
 }
 
 include "th0ths-quotes-widget.php";
