@@ -212,25 +212,80 @@ function th0ths_quotes_manage_quotes()
 /* import/export page */
 function th0ths_quotes_import_export()
 {
-    ?>
+    global $wpdb, $th0ths_quotes_plugin_table;
     
+    ?>
     <div class="wrap">
 		<h2>Import/Export</h2>
-        <h3>Import Quotes</h3>
-        <div id="th0ths_quotes_import_quotes" class="postbox">
-            <form method="post" enctype="multipart/form-data">
-                <label for="file">Filename:</label>
-                <input type="file" name="file" id="file" /> 
-                <br />
-                <input type="submit" name="submit" value="Import Quotes" />
-            </form>
-        </div>
-        <h3>Export Quotes</h3>
-        <div id="th0ths_quotes_import_quotes">
-            <a href="<?php echo add_query_arg("export", "true", admin_url() . "admin.php?page=th0ths-quotes-import-export"); ?>">Click here to export quotes</a>
-        </div>
+    <?php
+    if (isset($_FILES['import_quotes']))
+    {
+        if ($_FILES['import_quotes']['error'] > 0 ) // Error!
+        {
+            if ($_FILES['import_quotes']['error'] == 4)
+            {
+                echo "You should select a quote file to import quotes.";
+            }
+            else
+            {
+                echo "An error occured.";
+            }
+        }
+        elseif ($_FILES['import_quotes']['type'] != 'text/xml')
+        {
+            echo "You can import quotes only from an XML file.";
+        }
+        else
+        {
+            $import_quotes = new DOMDocument();
+            $import_quotes->load($_FILES['import_quotes']['tmp_name']);
+            
+            $xml_quotes = $import_quotes->getElementsByTagName("quote");
+            
+            $imported_quotes = array();
+            $i = 0;
+            
+            foreach ($xml_quotes as $quote)
+            {
+                $quoted = $quote->getElementsByTagName("quoted"); 
+                $imported_quotes[$i]['quote'] = $quoted->item(0)->nodeValue;
+                
+                $owner = $quote->getElementsByTagName("owner");
+                $imported_quotes[$i]['owner'] = $owner->item(0)->nodeValue;
+                
+                $i = $i + 1;
+            }
+            
+            foreach ($imported_quotes as $quote)
+            {
+                $wpdb->insert($th0ths_quotes_plugin_table, $quote);
+            }
+            
+            echo "Quotes are imported.";
+        } 
+    }
+    else
+    {
+    ?>
+    
+    <h3>Import Quotes</h3>
+    <div id="th0ths_quotes_import_quotes" class="postbox">
+        <form method="post" enctype="multipart/form-data">
+            <label for="file">Filename:</label>
+            <input type="file" name="import_quotes" id="file" /> 
+            <br />
+            <input type="submit" name="submit" value="Import Quotes" />
+        </form>
+    </div>
+    <h3>Export Quotes</h3>
+    <div id="th0ths_quotes_import_quotes">
+        <a href="<?php echo add_query_arg("export", "true", admin_url() . "admin.php?page=th0ths-quotes-import-export"); ?>">Click here to export quotes</a>
     </div>
     <br /><br />
+    <?php
+    }
+    ?>
+    </div>
     <?php
 }
 
