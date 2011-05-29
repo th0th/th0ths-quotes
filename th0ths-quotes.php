@@ -234,20 +234,40 @@ function th0ths_quotes_import_export()
     <?php
 }
 
-/* export - xml header */
-function th0ths_quotes_export_xml_header()
-{
-    header('Content-disposition: attachment; filename=quotes.xml');
-    echo "test";
-    die();
-}
-
 /* exporting quotes to xml */
-function th0ths_quotes_export_n_download()
+function th0ths_quotes_export_xml_header()
 {
     global $wpdb, $th0ths_quotes_plugin_table;
     
-    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", ARRAY_A);
+    
+    header('Content-disposition: attachment; filename=quotes.xml');
+
+    $exported = new DOMDocument;
+    $exported->formatOutput = true;
+    $root_element = $exported->createElement('exported_quotes');
+    $exported->appendChild($root_element);
+    
+    foreach ($quotes as $quote)
+    {
+        $quote_element = $exported->createElement('quote');
+        $root_element->appendChild($quote_element);
+        
+        $quote_text_element = $exported->createElement('quoted');
+        $quote_element->appendChild($quote_text_element);
+        
+        $quote_text_c_element = $exported->createTextNode($quote['quote']);
+        $quote_text_element->appendChild($quote_text_c_element);
+        
+        $quote_owner_element = $exported->createElement('owner');
+        $quote_element->appendChild($quote_owner_element);
+        
+        $quote_owner_c_element = $exported->createTextNode($quote['owner']);
+        $quote_owner_element->appendChild($quote_owner_c_element);
+    }
+    
+    echo $exported->saveXML();
+    die();
 }
 
 /* trash management function */
