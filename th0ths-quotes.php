@@ -5,7 +5,7 @@ Plugin Name: th0th's quotes
 Plugin URI: https://returnfalse.net/log/
 Description: Widget for displaying random quotes from your collection.
 Version: 0.4
-Author: H.Gökhan Sarı
+Author: Hüseyin Gökhan Sarı
 Author URI: http://returnfalse.net
 License: GPL3
 */
