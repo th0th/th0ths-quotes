@@ -4,8 +4,8 @@
 Plugin Name: th0th's quotes
 Plugin URI: https://returnfalse.net/log/
 Description: Widget for displaying random quotes from your collection.
-Version: 0.3
-Author: H.Gökhan Sarı
+Version: 0.4
+Author: Hüseyin Gökhan Sarı
 Author URI: http://returnfalse.net
 License: GPL3
 */
@@ -31,7 +31,7 @@ global $th0ths_quotes_plugin_table;
 global $th0ths_quotes_plugin_version;
 
 $th0ths_quotes_plugin_table = $wpdb->prefix . "th0ths_quotes";
-$th0ths_quotes_plugin_version = '0.3';
+$th0ths_quotes_plugin_version = '0.4';
 
 /* Plugin activation function */
 function th0ths_quotes_activate()
@@ -108,6 +108,9 @@ function th0ths_quotes_add_administration_menus()
     /* add quote management submenu item */
     add_submenu_page("th0ths-quotes", "Manage Quotes", "Manage Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
     
+    /* add import/export submenu item */
+    add_submenu_page("th0ths-quotes", "Import/Export", "Import/Export", "manage_options", "th0ths-quotes-import-export", "th0ths_quotes_import_export");
+    
     /* add trash submenu item */
     add_submenu_page("th0ths-quotes", "Trash", "Trash", "manage_options", "th0ths-quotes-trash", "th0ths_quotes_trash");
 }
@@ -149,10 +152,13 @@ function th0ths_quotes_manage_quotes()
 		}
 		elseif ($_POST['action'] == 'Send Selected Quotes to Trash')
 		{
-			foreach ($_POST['quoteIDs'] as $id)
-			{
-				$wpdb->update($th0ths_quotes_plugin_table, array('status' => '0'), array( 'id' => $id ));
-			}
+            if(isset($_POST['quoteIDs']))
+            {
+                foreach ($_POST['quoteIDs'] as $id)
+                {
+                    $wpdb->update($th0ths_quotes_plugin_table, array('status' => '0'), array( 'id' => $id ));
+                }
+            }
 		}
 	}
 	
@@ -206,6 +212,122 @@ function th0ths_quotes_manage_quotes()
     <?php
 }
 
+/* import/export page */
+function th0ths_quotes_import_export()
+{
+    global $wpdb, $th0ths_quotes_plugin_table;
+    
+    ?>
+    <div class="wrap">
+		<h2>Import/Export</h2>
+    <?php
+    if (isset($_FILES['import_quotes']))
+    {
+        if ($_FILES['import_quotes']['error'] > 0 ) // Error!
+        {
+            if ($_FILES['import_quotes']['error'] == 4)
+            {
+                echo "You should select a quote file to import quotes.";
+            }
+            else
+            {
+                echo "An error occured.";
+            }
+        }
+        elseif ($_FILES['import_quotes']['type'] != 'text/xml')
+        {
+            echo "You can import quotes only from an XML file.";
+        }
+        else
+        {
+            $import_quotes = new DOMDocument();
+            $import_quotes->load($_FILES['import_quotes']['tmp_name']);
+            
+            $xml_quotes = $import_quotes->getElementsByTagName("quote");
+            
+            $imported_quotes = array();
+            $i = 0;
+            
+            foreach ($xml_quotes as $quote)
+            {
+                $quoted = $quote->getElementsByTagName("quoted"); 
+                $imported_quotes[$i]['quote'] = $quoted->item(0)->nodeValue;
+                
+                $owner = $quote->getElementsByTagName("owner");
+                $imported_quotes[$i]['owner'] = $owner->item(0)->nodeValue;
+                
+                $i = $i + 1;
+            }
+            
+            foreach ($imported_quotes as $quote)
+            {
+                $wpdb->insert($th0ths_quotes_plugin_table, $quote);
+            }
+            
+            echo "Quotes are imported. You can see new quotes in 'Manage Quotes' page.";
+        } 
+    }
+    else
+    {
+    ?>
+    
+    <h3>Import Quotes</h3>
+    <div id="th0ths_quotes_import_quotes" class="postbox">
+        <form method="post" enctype="multipart/form-data">
+            <label for="file">Filename:</label>
+            <input type="file" name="import_quotes" id="file" /> 
+            <div class="th0ths_quotes_cleanser"></div>
+            <input type="submit" name="submit" value="Import Quotes" />
+        </form>
+    </div>
+    <h3>Export Quotes</h3>
+    <div id="th0ths_quotes_export_quotes">
+        <a href="<?php echo add_query_arg("export", "true", admin_url() . "admin.php?page=th0ths-quotes-import-export"); ?>">Click here to export quotes</a>
+    </div>
+    <br /><br />
+    <?php
+    }
+    ?>
+    </div>
+    <?php
+}
+
+/* exporting quotes to xml */
+function th0ths_quotes_export_to_xml()
+{
+    global $wpdb, $th0ths_quotes_plugin_table;
+    
+    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", ARRAY_A);
+    
+    header('Content-disposition: attachment; filename=quotes.xml');
+
+    $exported = new DOMDocument;
+    $exported->formatOutput = true;
+    $root_element = $exported->createElement('exported_quotes');
+    $exported->appendChild($root_element);
+    
+    foreach ($quotes as $quote)
+    {
+        $quote_element = $exported->createElement('quote');
+        $root_element->appendChild($quote_element);
+        
+        $quote_text_element = $exported->createElement('quoted');
+        $quote_element->appendChild($quote_text_element);
+        
+        $quote_text_c_element = $exported->createTextNode($quote['quote']);
+        $quote_text_element->appendChild($quote_text_c_element);
+        
+        $quote_owner_element = $exported->createElement('owner');
+        $quote_element->appendChild($quote_owner_element);
+        
+        $quote_owner_c_element = $exported->createTextNode($quote['owner']);
+        $quote_owner_element->appendChild($quote_owner_c_element);
+    }
+    
+    echo $exported->saveXML();
+    die();
+}
+
 /* trash management function */
 function th0ths_quotes_trash()
 {
@@ -215,17 +337,23 @@ function th0ths_quotes_trash()
 	{
 		if ($_POST['action'] == 'Restore Selected Quotes')
 		{
-			foreach ($_POST['quoteIDs'] as $id)
-			{
-				$wpdb->update($th0ths_quotes_plugin_table, array('status' => '1'), array( 'id' => $id ));
-			}
+            if (isset($_POST['quoteIDs']))
+            {
+                foreach ($_POST['quoteIDs'] as $id)
+                {
+                    $wpdb->update($th0ths_quotes_plugin_table, array('status' => '1'), array( 'id' => $id ));
+                }
+            }
 		}
 		elseif ($_POST['action'] == 'Delete Selected Quotes Permanently')
 		{
-			foreach ($_POST['quoteIDs'] as $id)
-			{
-				$wpdb->query("DELETE FROM $th0ths_quotes_plugin_table WHERE id = '$id'");
-			}
+            if (isset($_POST['quoteIDs']))
+            {
+                foreach ($_POST['quoteIDs'] as $id)
+                {
+                    $wpdb->query("DELETE FROM $th0ths_quotes_plugin_table WHERE id = '$id'");
+                }
+            }
 		}
 	}
 	
@@ -276,6 +404,14 @@ add_action('admin_head', 'th0ths_quotes_include_css');
 
 /* add js to admin_head */
 add_action('admin_head', 'th0ths_quotes_admin_head_js');
+
+if (array_key_exists('page', $_GET) && array_key_exists('export', $_GET))
+{
+    if ($_GET['page'] == 'th0ths-quotes-import-export' && $_GET['export'] == 'true')
+    {
+        add_action('admin_init', 'th0ths_quotes_export_to_xml');
+    }
+}
 
 include "th0ths-quotes-widget.php";
 
