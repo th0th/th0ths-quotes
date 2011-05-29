@@ -235,7 +235,7 @@ function th0ths_quotes_import_export()
 }
 
 /* exporting quotes to xml */
-function th0ths_quotes_export_xml_header()
+function th0ths_quotes_export_to_xml()
 {
     global $wpdb, $th0ths_quotes_plugin_table;
     
@@ -345,7 +345,7 @@ if (array_key_exists('page', $_GET) && array_key_exists('export', $_GET))
 {
     if ($_GET['page'] == 'th0ths-quotes-import-export' && $_GET['export'] == 'true')
     {
-        add_action('admin_init', 'th0ths_quotes_export_xml_header');
+        add_action('admin_init', 'th0ths_quotes_export_to_xml');
     }
 }
 
