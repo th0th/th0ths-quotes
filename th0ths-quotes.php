@@ -152,10 +152,13 @@ function th0ths_quotes_manage_quotes()
 		}
 		elseif ($_POST['action'] == 'Send Selected Quotes to Trash')
 		{
-			foreach ($_POST['quoteIDs'] as $id)
-			{
-				$wpdb->update($th0ths_quotes_plugin_table, array('status' => '0'), array( 'id' => $id ));
-			}
+            if(isset($_POST['quoteIDs']))
+            {
+                foreach ($_POST['quoteIDs'] as $id)
+                {
+                    $wpdb->update($th0ths_quotes_plugin_table, array('status' => '0'), array( 'id' => $id ));
+                }
+            }
 		}
 	}
 	
@@ -261,7 +264,7 @@ function th0ths_quotes_import_export()
                 $wpdb->insert($th0ths_quotes_plugin_table, $quote);
             }
             
-            echo "Quotes are imported.";
+            echo "Quotes are imported. You can see new quotes in 'Manage Quotes' page.";
         } 
     }
     else
@@ -273,12 +276,12 @@ function th0ths_quotes_import_export()
         <form method="post" enctype="multipart/form-data">
             <label for="file">Filename:</label>
             <input type="file" name="import_quotes" id="file" /> 
-            <br />
+            <div class="th0ths_quotes_cleanser"></div>
             <input type="submit" name="submit" value="Import Quotes" />
         </form>
     </div>
     <h3>Export Quotes</h3>
-    <div id="th0ths_quotes_import_quotes">
+    <div id="th0ths_quotes_export_quotes">
         <a href="<?php echo add_query_arg("export", "true", admin_url() . "admin.php?page=th0ths-quotes-import-export"); ?>">Click here to export quotes</a>
     </div>
     <br /><br />
@@ -334,17 +337,23 @@ function th0ths_quotes_trash()
 	{
 		if ($_POST['action'] == 'Restore Selected Quotes')
 		{
-			foreach ($_POST['quoteIDs'] as $id)
-			{
-				$wpdb->update($th0ths_quotes_plugin_table, array('status' => '1'), array( 'id' => $id ));
-			}
+            if (isset($_POST['quoteIDs']))
+            {
+                foreach ($_POST['quoteIDs'] as $id)
+                {
+                    $wpdb->update($th0ths_quotes_plugin_table, array('status' => '1'), array( 'id' => $id ));
+                }
+            }
 		}
 		elseif ($_POST['action'] == 'Delete Selected Quotes Permanently')
 		{
-			foreach ($_POST['quoteIDs'] as $id)
-			{
-				$wpdb->query("DELETE FROM $th0ths_quotes_plugin_table WHERE id = '$id'");
-			}
+            if (isset($_POST['quoteIDs']))
+            {
+                foreach ($_POST['quoteIDs'] as $id)
+                {
+                    $wpdb->query("DELETE FROM $th0ths_quotes_plugin_table WHERE id = '$id'");
+                }
+            }
 		}
 	}
 	
