@@ -162,7 +162,7 @@ function th0ths_quotes_manage_quotes()
 		}
 	}
 	
-	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", 'ARRAY_A');
+	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", ARRAY_A);
 	
     ?>
     
@@ -174,12 +174,14 @@ function th0ths_quotes_manage_quotes()
 					<thead>
 						<tr>
 							<th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
+                            <th>ID</th>
 							<th>Quote</th>
 							<th>Owner</th>
 						</tr>
 						<?php foreach ($quotes as $quote) { ?>
 						<tr>
 							<td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
+                            <td class="id"><?php echo $quote['id']; ?></td>
 							<td class="quote"><?php echo $quote['quote']; ?></td>
 							<td class="owner"><?php echo $quote['owner']; ?></td>
 						</tr>
@@ -357,7 +359,7 @@ function th0ths_quotes_trash()
 		}
 	}
 	
-	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '0'", 'ARRAY_A');
+	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '0'", ARRAY_A);
 	
     ?>
     
@@ -394,19 +396,29 @@ function th0ths_quotes_shortcode($atts)
 
     extract(shortcode_atts(array(
                     'class' => 'th0ths_quotes_sc',
+                    'id' => '',
                     'owner' => ''
                 ), $atts));
-
-    if ($owner == '')
+    
+    /* if 'id' is set owner attribute will be ignored */
+    if ($id == '')
     {
-        $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+        if ($owner == '')
+        {
+            $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+        }
+        else
+        {
+            $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE owner = '$owner'", ARRAY_A);
+        }
+
+    $quote = $quotes[array_rand($quotes)];
     }
     else
     {
-        $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE owner = '$owner'", ARRAY_A);
+        $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE id = '$id'", ARRAY_A);
+        $quote = $quotes[0];
     }
-
-    $quote = $quotes[array_rand($quotes)];
 
     ?>
         <div class="<?php echo $class; ?>">
