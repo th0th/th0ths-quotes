@@ -417,7 +417,18 @@ function th0ths_quotes_shortcode($atts)
     else
     {
         $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE id = '$id'", ARRAY_A);
-        $quote = $quotes[0];
+        
+        if (!empty($quotes))
+        {
+            $quote = $quotes[0];
+        }
+        else
+        {
+            $quote = array(
+                    'quote' => "There is no such quote with this ID.",
+                    'owner' => "Inspector Gadget"
+                );
+        }
     }
 
     ?>
