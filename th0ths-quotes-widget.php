@@ -33,7 +33,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
                             echo $before_title . $title . $after_title; }
                         else {
                                 echo $before_title . "Quotes" . $after_title; } ?>
-                  <?php echo $quote['quote']; ?> <i>-<?php echo $quote['owner']; ?></i>
+                  <i><?php echo $quote['quote']; ?></i> -<?php echo $quote['owner']; ?>
               <?php echo $after_widget; ?>
         <?php
     }
