@@ -25,6 +25,7 @@ A widget plugin that shows random quotes from your own collection.
 2. Import/Export quotes page
 3. Management page of plugin (trash)
 4. Screen shot of the widget itself
+5. Quote on a page with shortcode.
 
 == Changelog ==
 
@@ -41,6 +42,10 @@ A widget plugin that shows random quotes from your own collection.
 = 0.4 =
 * Empty form sends in management pages are now handled.
 * Import/Export feature is added.
+
+= 0.5 =
+* Shortcode support is added.
+* Some general styling has been done.
 
 == More ==
 
