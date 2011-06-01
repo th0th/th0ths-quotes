@@ -388,6 +388,33 @@ function th0ths_quotes_trash()
 		<?php
 }
 
+function th0ths_quotes_shortcode($atts)
+{
+    global $wpdb, $th0ths_quotes_plugin_table;
+
+    extract(shortcode_atts(array(
+                    'class' => 'th0ths_quotes_div',
+                    'owner' => ''
+                ), $atts));
+
+    if ($owner == '')
+    {
+        $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+    }
+    else
+    {
+        $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE owner = '$owner'", ARRAY_A);
+    }
+
+    $quote = $quotes[array_rand($quotes)];
+
+    ?>
+        <div class="<?php echo $class; ?>">
+            <i><?php echo $quote['quote']; ?></i> -<?php echo $quote['owner']; ?>
+        </div>
+    <?php
+}
+
 
 /* registering functions */
 register_activation_hook(__FILE__, 'th0ths_quotes_activate');
@@ -404,6 +431,9 @@ add_action('admin_head', 'th0ths_quotes_include_css');
 
 /* add js to admin_head */
 add_action('admin_head', 'th0ths_quotes_admin_head_js');
+
+/* register shortcodes */
+add_shortcode('th0ths_quotes', 'th0ths_quotes_shortcode');
 
 if (array_key_exists('page', $_GET) && array_key_exists('export', $_GET))
 {
