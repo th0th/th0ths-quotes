@@ -4,7 +4,7 @@
 Plugin Name: th0th's quotes
 Plugin URI: https://returnfalse.net/log/
 Description: Widget for displaying random quotes from your collection.
-Version: 0.4
+Version: 0.5
 Author: Hüseyin Gökhan Sarı
 Author URI: http://returnfalse.net
 License: GPL3
@@ -31,7 +31,7 @@ global $th0ths_quotes_plugin_table;
 global $th0ths_quotes_plugin_version;
 
 $th0ths_quotes_plugin_table = $wpdb->prefix . "th0ths_quotes";
-$th0ths_quotes_plugin_version = '0.4';
+$th0ths_quotes_plugin_version = '0.5';
 
 /* Plugin activation function */
 function th0ths_quotes_activate()
