@@ -97,7 +97,18 @@ function th0ths_quotes_admin_head_js()
 {
 	?>
 <script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/admin-head.js"></script>
-<?php }
+    <?php
+}
+
+function th0ths_quotes_donate()
+{
+    ?>
+    <div class="wrap">
+        <h2>Donate</h2>
+        <span>You can support development of this plugin by donating.</span>
+    </div>
+    <?php
+}
 
 /* Administration menus */
 function th0ths_quotes_add_administration_menus()
@@ -108,11 +119,17 @@ function th0ths_quotes_add_administration_menus()
     /* add quote management submenu item */
     add_submenu_page("th0ths-quotes", "Manage Quotes", "Manage Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
     
+    /* add new quote submenu item */
+    add_submenu_page("th0ths-quotes", "Add New", "Add New", "manage_options", "th0ths-quotes-add-new", "th0ths_quotes_add_new");
+    
     /* add import/export submenu item */
     add_submenu_page("th0ths-quotes", "Import/Export", "Import/Export", "manage_options", "th0ths-quotes-import-export", "th0ths_quotes_import_export");
     
     /* add trash submenu item */
     add_submenu_page("th0ths-quotes", "Trash", "Trash", "manage_options", "th0ths-quotes-trash", "th0ths_quotes_trash");
+
+    /* add donate submenu item */
+    add_submenu_page("th0ths-quotes", "Donate", "Donate", "manage_options", "th0ths-quotes-donate", "th0ths_quotes_donate");
 }
 
 /* Adding CSS */
@@ -128,29 +145,9 @@ function th0ths_quotes_manage_quotes()
 {
 	global $wpdb, $th0ths_quotes_plugin_table;
 	
-	if (!empty($_POST)) /* Action can be both add or delete */
+	if (!empty($_POST))
 	{
-		if ($_POST['action'] == 'Add')
-		{
-			$new_quote = array (
-				'quote' => $_POST['quote'],
-				'owner' => $_POST['owner']
-			);
-			
-			if (!(empty($new_quote['quote']) || empty($new_quote['owner'])))
-			{
-				$wpdb->insert($th0ths_quotes_plugin_table, $new_quote);
-			}
-			else
-			{
-				?>
-				<script type="text/javascript">
-					alert('You should fill both quote and owner sections.');
-				</script>
-				<?php
-			}
-		}
-		elseif ($_POST['action'] == 'Send Selected Quotes to Trash')
+		if ($_POST['action'] == 'Send Selected Quotes to Trash')
 		{
             if(isset($_POST['quoteIDs']))
             {
@@ -167,7 +164,9 @@ function th0ths_quotes_manage_quotes()
     ?>
     
     <div class="wrap">
-		<h2>Manage Quotes</h2>
+		<h2>Manage Quotes
+            <a class="button add-new-h2" href="admin.php?page=th0ths-quotes-add-new">Add New</a>
+        </h2>
 		<div id="th0ths_quotes_edit_quotes">
 			<form method="post" name="edit_quotes">
 				<table id="th0ths_quotes_qlist" class="widefat">
@@ -191,8 +190,53 @@ function th0ths_quotes_manage_quotes()
 				<input name="action" class="button" type="submit" value="Send Selected Quotes to Trash" />
 			</form>
 		</div>
-		<form method="post">
-			<h3 class="hndle">Add new quote</h3>
+		
+    </div>
+    
+    <?php
+}
+
+function th0ths_quotes_add_new()
+{
+	global $wpdb, $th0ths_quotes_plugin_table;
+	?>
+	<div class="wrap">
+	<h2>Add New Quote</h2>
+	<?php
+	
+	if (!empty($_POST))
+	{
+	if ($_POST['action'] == 'Add')
+		{
+			$new_quote = array (
+				'quote' => $_POST['quote'],
+				'owner' => $_POST['owner']
+			);
+			
+			if (empty($new_quote['quote']) && empty($new_quote['owner']))
+			{
+				?>
+				<script type="text/javascript">
+					alert('You should fill both quote and owner sections.');
+					history.go(-1);
+				</script>
+				<?php
+			}
+			else
+			{
+				$wpdb->insert($th0ths_quotes_plugin_table, $new_quote);
+				?>
+				<span>New quote is successfully added to collection.</span>
+				<div class="th0ths_quotes_cleanser"></div>
+				<span>Click <a href="admin.php?page=th0ths-quotes">here</a> to go to quote management page.</span>
+				<?php
+			}
+		}
+	}
+	else
+	{
+    ?>
+        <form method="post">
 			<div id="th0ths_quotes_new_quote" class="postbox">
 				<span>Quote</span>
 				<div class="th0ths_quotes_cleanser"></div>
@@ -209,8 +253,10 @@ function th0ths_quotes_manage_quotes()
 				<input name="action" class="button" type="submit" value="Add" />
 			</div>
 		</form>
+	<?php
+	}
+	?>
     </div>
-    
     <?php
 }
 
