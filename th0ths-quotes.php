@@ -393,7 +393,7 @@ function th0ths_quotes_shortcode($atts)
     global $wpdb, $th0ths_quotes_plugin_table;
 
     extract(shortcode_atts(array(
-                    'class' => 'th0ths_quotes_div',
+                    'class' => 'th0ths_quotes_sc',
                     'owner' => ''
                 ), $atts));
 
@@ -410,7 +410,10 @@ function th0ths_quotes_shortcode($atts)
 
     ?>
         <div class="<?php echo $class; ?>">
-            <i><?php echo $quote['quote']; ?></i> -<?php echo $quote['owner']; ?>
+            <blockquote>
+                <div id="th0ths_quotes_sc_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div>
+                <div id="th0ths_quotes_sc_owner" style="text-align: right;">-<?php echo $quote['owner']; ?></div>
+            </blockquote>
         </div>
     <?php
 }
