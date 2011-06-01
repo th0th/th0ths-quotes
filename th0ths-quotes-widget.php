@@ -33,7 +33,8 @@ class th0ths_Quotes_Widget extends WP_Widget {
                             echo $before_title . $title . $after_title; }
                         else {
                                 echo $before_title . "Quotes" . $after_title; } ?>
-                  <div id="th0ths_quotes_widget_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div><div id="th0ths_quotes_widget_owner" style="text-align: right;">-<?php echo $quote['owner']; ?></div>
+                  <div id="th0ths_quotes_widget_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div>
+                  <div id="th0ths_quotes_widget_owner" style="text-align: right;">-<?php echo $quote['owner']; ?></div>
               <?php echo $after_widget; ?>
         <?php
     }
