@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, sidebar
 Requires at least: 3.1.2
 Tested up to: 3.1.3
-Stable tag: 0.4
+Stable tag: 0.5
 
 A widget plugin that shows random quotes from your own collection.
 
