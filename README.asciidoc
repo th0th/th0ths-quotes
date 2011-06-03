@@ -12,7 +12,7 @@
 
 **Stable tag:** 0.5
 
-A widget plugin that shows random quotes from your own collection.
+A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
 
 == Description ==
 
