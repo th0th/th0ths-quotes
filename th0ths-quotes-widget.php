@@ -1,5 +1,7 @@
 <?php
 
+/*  This code is a part of the th0th's Quotes Wordpress plugin.  */
+
 /*  Copyright 2011 Hüseyin Gökhan Sarı  (email : th0th -at- returnfalse.net)
 
     This program is free software; you can redistribute it and/or modify
