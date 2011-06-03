@@ -105,15 +105,16 @@ function th0ths_quotes_donate()
     ?>
     <div class="wrap">
         <h2>Donate</h2>
-        <p><i>th0th's Quotes</i> is a free (both free as in beer and freedom) plugin released under terms of <a target="_blank" href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL</a>.</p>
+        <p><b>th0th's Quotes</b> is a free <i>(both free as in beer and freedom)</i> plugin released under terms of <a target="_blank" href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL</a>. However, if you liked this project you can support its development by a donation.</p>
+        
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
             <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="PJKST6DBU7Y74">
-            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <input type="hidden" name="hosted_button_id" value="7D75SD2JLPCMQ">
+            <input type="image" src="https://www.paypalobjects.com/en_US/TR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
         </form>
-
-
+        
+        <p>You can use Paypal button to donate.</p>
     </div>
     <?php
 }
