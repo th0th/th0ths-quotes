@@ -1,5 +1,7 @@
 <?php
 
+/*  This code is a part of the th0th's Quotes Wordpress plugin.  */
+
 /*  Copyright 2011 Hüseyin Gökhan Sarı  (email : th0th -at- returnfalse.net)
 
     This program is free software; you can redistribute it and/or modify
@@ -33,7 +35,8 @@ class th0ths_Quotes_Widget extends WP_Widget {
                             echo $before_title . $title . $after_title; }
                         else {
                                 echo $before_title . "Quotes" . $after_title; } ?>
-                  <?php echo $quote['quote']; ?> <i>-<?php echo $quote['owner']; ?></i>
+                  <div id="th0ths_quotes_widget_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div>
+                  <div id="th0ths_quotes_widget_owner" style="text-align: right;">-<?php echo $quote['owner']; ?></div>
               <?php echo $after_widget; ?>
         <?php
     }

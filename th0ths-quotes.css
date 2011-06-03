@@ -15,6 +15,11 @@ table#th0ths_quotes_qlist th.sendToTrash input {
 	margin-left: 2px;
 }
 
+table#th0ths_quotes_qlist td.id {
+    width: 16px;
+    padding-left: 10px;
+}
+
 table#th0ths_quotes_qlist td.quote {
 	width: 80%;
 }
@@ -24,13 +29,13 @@ table#th0ths_quotes_qlist td.owner {
 }
 
 table#th0ths_quotes_qlist td.sendToTrash {
-	width:20px;
+	width: 20px;
 	text-align: center;
 	font-weight: bold;
 }
 
 div#th0ths_quotes_new_quote {
-	width: 500px !important;
+	width: 700px !important;
 	padding: 20px 20px 20px 30px;
 }
 

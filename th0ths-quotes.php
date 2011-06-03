@@ -3,8 +3,8 @@
 /*
 Plugin Name: th0th's quotes
 Plugin URI: https://returnfalse.net/log/
-Description: Widget for displaying random quotes from your collection.
-Version: 0.4
+Description: A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
+Version: 0.5
 Author: Hüseyin Gökhan Sarı
 Author URI: http://returnfalse.net
 License: GPL3
@@ -31,7 +31,7 @@ global $th0ths_quotes_plugin_table;
 global $th0ths_quotes_plugin_version;
 
 $th0ths_quotes_plugin_table = $wpdb->prefix . "th0ths_quotes";
-$th0ths_quotes_plugin_version = '0.4';
+$th0ths_quotes_plugin_version = '0.5';
 
 /* Plugin activation function */
 function th0ths_quotes_activate()
@@ -76,28 +76,48 @@ function th0ths_quotes_activate()
 /* Plugin upgrade function */
 function th0ths_quotes_upgrade_check()
 {
-	global $th0ths_quotes_plugin_version;
-	
-	$current_version = get_option("th0ths_quotes_version");
-	
-	if ($current_version != $th0ths_quotes_plugin_version)
-	{
-		update_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
-	}
+    global $th0ths_quotes_plugin_version;
+    
+    $current_version = get_option("th0ths_quotes_version");
+    
+    if ($current_version != $th0ths_quotes_plugin_version)
+    {
+        update_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
+    }
 }
 
 /* Plugin deactivation function */
 function th0ths_quotes_deactivate()
 {
-	delete_option("th0ths_quotes_version");
+    delete_option("th0ths_quotes_version");
 }
 
 /* JS */
 function th0ths_quotes_admin_head_js()
 {
-	?>
+    ?>
 <script type="text/javascript" src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/admin-head.js"></script>
-<?php }
+    <?php
+}
+
+function th0ths_quotes_donate()
+{
+    ?>
+    <div class="wrap">
+        <h2>Donate</h2>
+        <p><b>th0th's Quotes</b> is a free <i>(both free as in beer and freedom)</i> plugin released under terms of <a target="_blank" href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL</a>. However, if you liked this project you can support its development by a donation.</p>
+        
+        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+            <input type="hidden" name="cmd" value="_s-xclick">
+            <input type="hidden" name="hosted_button_id" value="7D75SD2JLPCMQ">
+            <input type="image" src="https://www.paypalobjects.com/en_US/TR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+        </form>
+        
+        <p>You can use Paypal button to donate.</p>
+    </div>
+    <?php
+}
 
 /* Administration menus */
 function th0ths_quotes_add_administration_menus()
@@ -108,11 +128,17 @@ function th0ths_quotes_add_administration_menus()
     /* add quote management submenu item */
     add_submenu_page("th0ths-quotes", "Manage Quotes", "Manage Quotes", "manage_options", "th0ths-quotes", "th0ths_quotes_manage_quotes");
     
+    /* add new quote submenu item */
+    add_submenu_page("th0ths-quotes", "Add New", "Add New", "manage_options", "th0ths-quotes-add-new", "th0ths_quotes_add_new");
+    
     /* add import/export submenu item */
     add_submenu_page("th0ths-quotes", "Import/Export", "Import/Export", "manage_options", "th0ths-quotes-import-export", "th0ths_quotes_import_export");
     
     /* add trash submenu item */
     add_submenu_page("th0ths-quotes", "Trash", "Trash", "manage_options", "th0ths-quotes-trash", "th0ths_quotes_trash");
+
+    /* add donate submenu item */
+    add_submenu_page("th0ths-quotes", "Donate", "Donate", "manage_options", "th0ths-quotes-donate", "th0ths_quotes_donate");
 }
 
 /* Adding CSS */
@@ -126,32 +152,12 @@ function th0ths_quotes_include_css()
 /* Quote management page */
 function th0ths_quotes_manage_quotes()
 {
-	global $wpdb, $th0ths_quotes_plugin_table;
-	
-	if (!empty($_POST)) /* Action can be both add or delete */
-	{
-		if ($_POST['action'] == 'Add')
-		{
-			$new_quote = array (
-				'quote' => $_POST['quote'],
-				'owner' => $_POST['owner']
-			);
-			
-			if (!(empty($new_quote['quote']) || empty($new_quote['owner'])))
-			{
-				$wpdb->insert($th0ths_quotes_plugin_table, $new_quote);
-			}
-			else
-			{
-				?>
-				<script type="text/javascript">
-					alert('You should fill both quote and owner sections.');
-				</script>
-				<?php
-			}
-		}
-		elseif ($_POST['action'] == 'Send Selected Quotes to Trash')
-		{
+    global $wpdb, $th0ths_quotes_plugin_table;
+    
+    if (!empty($_POST))
+    {
+        if ($_POST['action'] == 'Send Selected Quotes to Trash')
+        {
             if(isset($_POST['quoteIDs']))
             {
                 foreach ($_POST['quoteIDs'] as $id)
@@ -159,56 +165,107 @@ function th0ths_quotes_manage_quotes()
                     $wpdb->update($th0ths_quotes_plugin_table, array('status' => '0'), array( 'id' => $id ));
                 }
             }
-		}
-	}
-	
-	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", 'ARRAY_A');
-	
+        }
+    }
+    
+    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '1'", ARRAY_A);
+    
     ?>
     
     <div class="wrap">
-		<h2>Manage Quotes</h2>
-		<div id="th0ths_quotes_edit_quotes">
-			<form method="post" name="edit_quotes">
-				<table id="th0ths_quotes_qlist" class="widefat">
-					<thead>
-						<tr>
-							<th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
-							<th>Quote</th>
-							<th>Owner</th>
-						</tr>
-						<?php foreach ($quotes as $quote) { ?>
-						<tr>
-							<td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
-							<td class="quote"><?php echo $quote['quote']; ?></td>
-							<td class="owner"><?php echo $quote['owner']; ?></td>
-						</tr>
-						<?php } ?>
-					</thead>
-				</table>
-				<input name="action" class="button" type="submit" value="Send Selected Quotes to Trash" />
-			</form>
-		</div>
-		<form method="post">
-			<h3 class="hndle">Add new quote</h3>
-			<div id="th0ths_quotes_new_quote" class="postbox">
-				<span>Quote</span>
-				<div class="th0ths_quotes_cleanser"></div>
-				
-				<textarea name="quote"></textarea>
-				<div class="th0ths_quotes_cleanser"></div>
-				
-				<span>Owner</span>
-				<div class="th0ths_quotes_cleanser"></div>
-				
-				<input type="text" name="owner" />
-				<div class="th0ths_quotes_cleanser"></div>
-				
-				<input name="action" class="button" type="submit" value="Add" />
-			</div>
-		</form>
+        <h2>Manage Quotes
+            <a class="button add-new-h2" href="admin.php?page=th0ths-quotes-add-new">Add New</a>
+        </h2>
+        <div id="th0ths_quotes_edit_quotes">
+            <form method="post" name="edit_quotes">
+                <table id="th0ths_quotes_qlist" class="widefat">
+                    <thead>
+                        <tr>
+                            <th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
+                            <th>ID</th>
+                            <th>Quote</th>
+                            <th>Owner</th>
+                        </tr>
+                        <?php foreach ($quotes as $quote) { ?>
+                        <tr>
+                            <td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
+                            <td class="id"><?php echo $quote['id']; ?></td>
+                            <td class="quote"><?php echo $quote['quote']; ?></td>
+                            <td class="owner"><?php echo $quote['owner']; ?></td>
+                        </tr>
+                        <?php } ?>
+                    </thead>
+                </table>
+                <input name="action" class="button" type="submit" value="Send Selected Quotes to Trash" />
+            </form>
+        </div>
+        
     </div>
     
+    <?php
+}
+
+function th0ths_quotes_add_new()
+{
+    global $wpdb, $th0ths_quotes_plugin_table;
+    ?>
+    <div class="wrap">
+    <h2>Add New Quote</h2>
+    <?php
+    
+    if (!empty($_POST))
+    {
+    if ($_POST['action'] == 'Add')
+        {
+            $new_quote = array (
+                'quote' => $_POST['quote'],
+                'owner' => $_POST['owner']
+            );
+            
+            if (empty($new_quote['quote']) && empty($new_quote['owner']))
+            {
+                ?>
+                <script type="text/javascript">
+                    alert('You should fill both quote and owner sections.');
+                    history.go(-1);
+                </script>
+                <?php
+            }
+            else
+            {
+                $wpdb->insert($th0ths_quotes_plugin_table, $new_quote);
+                ?>
+                <span>New quote is successfully added to collection.</span>
+                <div class="th0ths_quotes_cleanser"></div>
+                <span>Click <a href="admin.php?page=th0ths-quotes">here</a> to go to quote management page.</span>
+                <?php
+            }
+        }
+    }
+    else
+    {
+    ?>
+        <form method="post">
+            <div id="th0ths_quotes_new_quote" class="postbox">
+                <span>Quote</span>
+                <div class="th0ths_quotes_cleanser"></div>
+                
+                <textarea name="quote"></textarea>
+                <div class="th0ths_quotes_cleanser"></div>
+                
+                <span>Owner</span>
+                <div class="th0ths_quotes_cleanser"></div>
+                
+                <input type="text" name="owner" />
+                <div class="th0ths_quotes_cleanser"></div>
+                
+                <input name="action" class="button" type="submit" value="Add" />
+            </div>
+        </form>
+    <?php
+    }
+    ?>
+    </div>
     <?php
 }
 
@@ -219,7 +276,7 @@ function th0ths_quotes_import_export()
     
     ?>
     <div class="wrap">
-		<h2>Import/Export</h2>
+        <h2>Import/Export</h2>
     <?php
     if (isset($_FILES['import_quotes']))
     {
@@ -331,12 +388,12 @@ function th0ths_quotes_export_to_xml()
 /* trash management function */
 function th0ths_quotes_trash()
 {
-	global $wpdb, $th0ths_quotes_plugin_table;
-	
-	if (!empty($_POST))
-	{
-		if ($_POST['action'] == 'Restore Selected Quotes')
-		{
+    global $wpdb, $th0ths_quotes_plugin_table;
+    
+    if (!empty($_POST))
+    {
+        if ($_POST['action'] == 'Restore Selected Quotes')
+        {
             if (isset($_POST['quoteIDs']))
             {
                 foreach ($_POST['quoteIDs'] as $id)
@@ -344,9 +401,9 @@ function th0ths_quotes_trash()
                     $wpdb->update($th0ths_quotes_plugin_table, array('status' => '1'), array( 'id' => $id ));
                 }
             }
-		}
-		elseif ($_POST['action'] == 'Delete Selected Quotes Permanently')
-		{
+        }
+        elseif ($_POST['action'] == 'Delete Selected Quotes Permanently')
+        {
             if (isset($_POST['quoteIDs']))
             {
                 foreach ($_POST['quoteIDs'] as $id)
@@ -354,38 +411,89 @@ function th0ths_quotes_trash()
                     $wpdb->query("DELETE FROM $th0ths_quotes_plugin_table WHERE id = '$id'");
                 }
             }
-		}
-	}
-	
-	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '0'", 'ARRAY_A');
-	
+        }
+    }
+    
+    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status = '0'", ARRAY_A);
+    
     ?>
     
     <div class="wrap">
-		<h2>Trash</h2>
-		<div id="th0ths_quotes_edit_quotes">
-			<form method="post" name="edit_quotes">
-				<table id="th0ths_quotes_qlist" class="widefat">
-					<thead>
-						<tr>
-							<th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
-							<th>Quote</th>
-							<th>Owner</th>
-						</tr>
-						<?php foreach ($quotes as $quote) { ?>
-						<tr>
-							<td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
-							<td class="quote"><?php echo $quote['quote']; ?></td>
-							<td class="owner"><?php echo $quote['owner']; ?></td>
-						</tr>
-						<?php } ?>
-					</thead>
-				</table>
-				<input name="action" class="button" type="submit" value="Restore Selected Quotes" />
-				<input name="action" class="button" type="submit" value="Delete Selected Quotes Permanently" />
-			</form>
-		</div>
-		<?php
+        <h2>Trash</h2>
+        <div id="th0ths_quotes_edit_quotes">
+            <form method="post" name="edit_quotes">
+                <table id="th0ths_quotes_qlist" class="widefat">
+                    <thead>
+                        <tr>
+                            <th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
+                            <th>Quote</th>
+                            <th>Owner</th>
+                        </tr>
+                        <?php foreach ($quotes as $quote) { ?>
+                        <tr>
+                            <td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
+                            <td class="quote"><?php echo $quote['quote']; ?></td>
+                            <td class="owner"><?php echo $quote['owner']; ?></td>
+                        </tr>
+                        <?php } ?>
+                    </thead>
+                </table>
+                <input name="action" class="button" type="submit" value="Restore Selected Quotes" />
+                <input name="action" class="button" type="submit" value="Delete Selected Quotes Permanently" />
+            </form>
+        </div>
+        <?php
+}
+
+function th0ths_quotes_shortcode($atts)
+{
+    global $wpdb, $th0ths_quotes_plugin_table;
+
+    extract(shortcode_atts(array(
+                    'class' => 'th0ths_quotes_sc',
+                    'id' => '',
+                    'owner' => ''
+                ), $atts));
+    
+    /* if 'id' is set owner attribute will be ignored */
+    if ($id == '')
+    {
+        if ($owner == '')
+        {
+            $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+        }
+        else
+        {
+            $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE owner = '$owner'", ARRAY_A);
+        }
+
+    $quote = $quotes[array_rand($quotes)];
+    }
+    else
+    {
+        $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE id = '$id'", ARRAY_A);
+        
+        if (!empty($quotes))
+        {
+            $quote = $quotes[0];
+        }
+        else
+        {
+            $quote = array(
+                    'quote' => "There is no such quote with this ID.",
+                    'owner' => "Inspector Gadget"
+                );
+        }
+    }
+
+    ?>
+        <div class="<?php echo $class; ?>">
+            <blockquote>
+                <div id="th0ths_quotes_sc_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div>
+                <div id="th0ths_quotes_sc_owner" style="text-align: right;">-<?php echo $quote['owner']; ?></div>
+            </blockquote>
+        </div>
+    <?php
 }
 
 
@@ -404,6 +512,9 @@ add_action('admin_head', 'th0ths_quotes_include_css');
 
 /* add js to admin_head */
 add_action('admin_head', 'th0ths_quotes_admin_head_js');
+
+/* register shortcodes */
+add_shortcode('th0ths_quotes', 'th0ths_quotes_shortcode');
 
 if (array_key_exists('page', $_GET) && array_key_exists('export', $_GET))
 {
