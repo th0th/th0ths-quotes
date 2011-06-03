@@ -1,6 +1,6 @@
 === th0th's Quotes ===
 Contributors: th0th
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=JYSYCB2U4FTKE
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7D75SD2JLPCMQ
 Tags: widget, sidebar
 Requires at least: 3.1.2
 Tested up to: 3.1.3
