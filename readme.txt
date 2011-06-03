@@ -6,7 +6,7 @@ Requires at least: 3.1.2
 Tested up to: 3.1.3
 Stable tag: 0.5
 
-A widget plugin that shows random quotes from your own collection.
+A plugin that shows random quotes on wherever you want.
 
 == Description ==
 
