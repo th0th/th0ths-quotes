@@ -3,7 +3,7 @@
 /*
 Plugin Name: th0th's quotes
 Plugin URI: https://returnfalse.net/log/
-Description: Widget for displaying random quotes from your collection.
+Description: A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
 Version: 0.5
 Author: Hüseyin Gökhan Sarı
 Author URI: http://returnfalse.net
