@@ -28,7 +28,7 @@ You also can show one specific quote on a page or post. For this you can use `id
 
 == Installation ==
 
-1. Upload th0ths_quotes folder to your `wp-content/plugins/` directory.
+1. Upload th0ths-quotes folder to your `wp-content/plugins/` directory.
 1. Activate the plugin through the 'Plugins' menu in WordPress.
 1. Add widget to your prefered location through the 'Appearance' menu in Wordpress.
 1. Manage quotes using "th0th's quotes" menu in administration panel.
