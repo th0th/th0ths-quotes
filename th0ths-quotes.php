@@ -104,7 +104,7 @@ function th0ths_quotes_donate()
 {
     ?>
     <div class="wrap">
-        <h2>Donate</h2>
+        <h2><?php _e("Donate"); ?></h2>
         <p><b>th0th's Quotes</b> is a free <i>(both free as in beer and freedom)</i> plugin released under terms of <a target="_blank" href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">GPL</a>. However, if you liked this project you can support its development by a donation.</p>
         
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -114,7 +114,7 @@ function th0ths_quotes_donate()
             <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
         </form>
         
-        <p>You can use Paypal button to donate.</p>
+        <p><?php _e("You can use Paypal button to donate."); ?></p>
     </div>
     <?php
 }
@@ -173,8 +173,8 @@ function th0ths_quotes_manage_quotes()
     ?>
     
     <div class="wrap">
-        <h2>Manage Quotes
-            <a class="button add-new-h2" href="admin.php?page=th0ths-quotes-add-new">Add New</a>
+        <h2><?php _e("Manage Quotes"); ?>
+            <a class="button add-new-h2" href="admin.php?page=th0ths-quotes-add-new"><?php _e("Add New"); ?></a>
         </h2>
         <div id="th0ths_quotes_edit_quotes">
             <form method="post" name="edit_quotes">
@@ -182,9 +182,9 @@ function th0ths_quotes_manage_quotes()
                     <thead>
                         <tr>
                             <th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
-                            <th>ID</th>
-                            <th>Quote</th>
-                            <th>Owner</th>
+                            <th><?php _e("ID"); ?></th>
+                            <th><?php _e("Quote"); ?></th>
+                            <th><?php _e("Owner"); ?></th>
                         </tr>
                         <?php foreach ($quotes as $quote) { ?>
                         <tr>
@@ -210,7 +210,7 @@ function th0ths_quotes_add_new()
     global $wpdb, $th0ths_quotes_plugin_table;
     ?>
     <div class="wrap">
-    <h2>Add New Quote</h2>
+    <h2><?php _e("Add New Quote"); ?></h2>
     <?php
     
     if (!empty($_POST))
@@ -226,7 +226,7 @@ function th0ths_quotes_add_new()
             {
                 ?>
                 <script type="text/javascript">
-                    alert('You should fill both quote and owner sections.');
+                    alert('<?php _e("You should fill both quote and owner sections."); ?>');
                     history.go(-1);
                 </script>
                 <?php
@@ -235,7 +235,7 @@ function th0ths_quotes_add_new()
             {
                 $wpdb->insert($th0ths_quotes_plugin_table, $new_quote);
                 ?>
-                <span>New quote is successfully added to collection.</span>
+                <span><?php _e("New quote is successfully added to collection."); ?></span>
                 <div class="th0ths_quotes_cleanser"></div>
                 <span>Click <a href="admin.php?page=th0ths-quotes">here</a> to go to quote management page.</span>
                 <?php
@@ -247,13 +247,13 @@ function th0ths_quotes_add_new()
     ?>
         <form method="post">
             <div id="th0ths_quotes_new_quote" class="postbox">
-                <span>Quote</span>
+                <span><?php _e("Quote"); ?></span>
                 <div class="th0ths_quotes_cleanser"></div>
                 
                 <textarea name="quote"></textarea>
                 <div class="th0ths_quotes_cleanser"></div>
                 
-                <span>Owner</span>
+                <span><?php _e("Owner"); ?></span>
                 <div class="th0ths_quotes_cleanser"></div>
                 
                 <input type="text" name="owner" />
@@ -276,7 +276,7 @@ function th0ths_quotes_import_export()
     
     ?>
     <div class="wrap">
-        <h2>Import/Export</h2>
+        <h2><?php _e("Import/Export"); ?></h2>
     <?php
     if (isset($_FILES['import_quotes']))
     {
@@ -293,7 +293,7 @@ function th0ths_quotes_import_export()
         }
         elseif ($_FILES['import_quotes']['type'] != 'text/xml')
         {
-            echo "You can import quotes only from an XML file.";
+            _e("You can import quotes only from an XML file.");
         }
         else
         {
@@ -321,25 +321,25 @@ function th0ths_quotes_import_export()
                 $wpdb->insert($th0ths_quotes_plugin_table, $quote);
             }
             
-            echo "Quotes are imported. You can see new quotes in 'Manage Quotes' page.";
+            _e("Quotes are imported. You can see new quotes in 'Manage Quotes' page.");
         } 
     }
     else
     {
     ?>
     
-    <h3>Import Quotes</h3>
+    <h3><?php _e("Import Quotes"); ?></h3>
     <div id="th0ths_quotes_import_quotes" class="postbox">
         <form method="post" enctype="multipart/form-data">
-            <label for="file">Filename:</label>
+            <label for="file"><?php _e("Filename"); ?>:</label>
             <input type="file" name="import_quotes" id="file" /> 
             <div class="th0ths_quotes_cleanser"></div>
             <input type="submit" name="submit" value="Import Quotes" />
         </form>
     </div>
-    <h3>Export Quotes</h3>
+    <h3><?php _e("Export Quotes"); ?></h3>
     <div id="th0ths_quotes_export_quotes">
-        <a href="<?php echo add_query_arg("export", "true", admin_url() . "admin.php?page=th0ths-quotes-import-export"); ?>">Click here to export quotes</a>
+        <a href="<?php echo add_query_arg("export", "true", admin_url() . "admin.php?page=th0ths-quotes-import-export"); ?>"><?php _e("Click here to export quotes"); ?></a>
     </div>
     <br /><br />
     <?php
@@ -419,15 +419,15 @@ function th0ths_quotes_trash()
     ?>
     
     <div class="wrap">
-        <h2>Trash</h2>
+        <h2><?php _e("Trash"); ?></h2>
         <div id="th0ths_quotes_edit_quotes">
             <form method="post" name="edit_quotes">
                 <table id="th0ths_quotes_qlist" class="widefat">
                     <thead>
                         <tr>
                             <th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
-                            <th>Quote</th>
-                            <th>Owner</th>
+                            <th><?php _e("Quote"); ?></th>
+                            <th><?php _e("Owner"); ?></th>
                         </tr>
                         <?php foreach ($quotes as $quote) { ?>
                         <tr>
