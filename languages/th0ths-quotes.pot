@@ -1,0 +1,158 @@
+# Copyright (C) 2010 th0th's quotes
+# This file is distributed under the same license as the th0th's quotes package.
+msgid ""
+msgstr ""
+"Project-Id-Version: th0th's quotes 0.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/th0ths-quotes\n"
+"POT-Creation-Date: 2011-06-10 03:46:32+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: th0ths-quotes-widget.php:37
+msgid "Quotes"
+msgstr ""
+
+#: th0ths-quotes-widget.php:54
+msgid "Title:"
+msgstr ""
+
+#: th0ths-quotes.php:107 th0ths-quotes.php:141
+msgid "Donate"
+msgstr ""
+
+#: th0ths-quotes.php:108
+msgid ""
+"%sth0th's Quotes%s is a free <i>(both free as in beer and freedom)</i> "
+"plugin released under terms of %sGPL%s. However, if you liked this project "
+"you can support its development by a donation."
+msgstr ""
+
+#: th0ths-quotes.php:117
+msgid "You can use Paypal button to donate."
+msgstr ""
+
+#: th0ths-quotes.php:126
+msgid "th0th's Quotes"
+msgstr ""
+
+#: th0ths-quotes.php:129 th0ths-quotes.php:176
+msgid "Manage Quotes"
+msgstr ""
+
+#: th0ths-quotes.php:132 th0ths-quotes.php:177
+msgid "Add New"
+msgstr ""
+
+#: th0ths-quotes.php:135 th0ths-quotes.php:279
+msgid "Import/Export"
+msgstr ""
+
+#: th0ths-quotes.php:138 th0ths-quotes.php:422
+msgid "Trash"
+msgstr ""
+
+#: th0ths-quotes.php:159 th0ths-quotes.php:199
+msgid "Send Selected Quotes to Trash"
+msgstr ""
+
+#: th0ths-quotes.php:185
+msgid "ID"
+msgstr ""
+
+#: th0ths-quotes.php:186 th0ths-quotes.php:250 th0ths-quotes.php:429
+msgid "Quote"
+msgstr ""
+
+#: th0ths-quotes.php:187 th0ths-quotes.php:256 th0ths-quotes.php:430
+msgid "Owner"
+msgstr ""
+
+#: th0ths-quotes.php:213
+msgid "Add New Quote"
+msgstr ""
+
+#: th0ths-quotes.php:218 th0ths-quotes.php:262
+msgid "Add"
+msgstr ""
+
+#: th0ths-quotes.php:229
+msgid "You should fill both quote and owner sections."
+msgstr ""
+
+#: th0ths-quotes.php:238
+msgid "New quote is successfully added to collection."
+msgstr ""
+
+#: th0ths-quotes.php:240
+msgid "Click %shere%s to go to quote management page."
+msgstr ""
+
+#: th0ths-quotes.php:287
+msgid "You should select a quote file to import quotes."
+msgstr ""
+
+#: th0ths-quotes.php:296
+msgid "You can import quotes only from an XML file."
+msgstr ""
+
+#: th0ths-quotes.php:324
+msgid "Quotes are imported. You can see new quotes in 'Manage Quotes' page."
+msgstr ""
+
+#: th0ths-quotes.php:331 th0ths-quotes.php:337
+msgid "Import Quotes"
+msgstr ""
+
+#: th0ths-quotes.php:334
+msgid "Filename"
+msgstr ""
+
+#: th0ths-quotes.php:340
+msgid "Export Quotes"
+msgstr ""
+
+#: th0ths-quotes.php:342
+msgid "Click here to export quotes"
+msgstr ""
+
+#: th0ths-quotes.php:395 th0ths-quotes.php:441
+msgid "Restore Selected Quotes"
+msgstr ""
+
+#: th0ths-quotes.php:405 th0ths-quotes.php:442
+msgid "Delete Selected Quotes Permanently"
+msgstr ""
+
+#: th0ths-quotes.php:483
+msgid "There is no such quote with this ID."
+msgstr ""
+
+#: th0ths-quotes.php:484
+msgid "Inspector Gadget"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "th0th's quotes"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://returnfalse.net/log/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A plugin that enables you to display a random quote from your collection on "
+"sidebar, posts and pages."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Hüseyin Gökhan Sarı"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://returnfalse.net"
+msgstr ""
