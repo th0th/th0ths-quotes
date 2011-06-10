@@ -49,26 +49,26 @@ The plugin uses its own database table to store quotes. And Wordpress doesn't ha
 
 == Changelog ==
 
-= 0.1 =
-* First release.
-
-= 0.2 =
-* Enabling delete of multiple quotes with checkboxes.
-* Check all checkbox is added.
-
-= 0.3 =
-* 'Trash' feature is added.
-
-= 0.4 =
-* Empty form sends in management pages are now handled.
-* Import/Export feature is added.
+= 0.6 =
+* Language support is added.
 
 = 0.5 =
 * Shortcode support is added.
 * Some general styling has been done.
 
-= 0.6 =
-* Language support is added.
+= 0.4 =
+* Empty form sends in management pages are now handled.
+* Import/Export feature is added.
+
+= 0.3 =
+* 'Trash' feature is added.
+
+= 0.2 =
+* Enabling delete of multiple quotes with checkboxes.
+* Check all checkbox is added.
+
+= 0.1 =
+* First release.
 
 == More ==
 
