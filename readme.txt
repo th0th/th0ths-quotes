@@ -42,10 +42,11 @@ The plugin uses its own database table to store quotes. And Wordpress doesn't ha
 == Screenshots ==
 
 1. Management page of plugin
-2. Import/Export quotes page
-3. Management page of plugin (trash)
-4. Screen shot of the widget itself
-5. Quote on a page with shortcode.
+2. Add new quote page
+3. Edit quote page
+4. Import/Export quotes page
+5. Screen shot of the widget itself
+6. Quote on a page with shortcode.
 
 == Changelog ==
 
