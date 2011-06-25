@@ -20,6 +20,10 @@ table#th0ths_quotes_qlist td.id {
     padding-left: 10px;
 }
 
+table#th0ths_quotes_qlist td.edit {
+	width: 18px;
+}
+
 table#th0ths_quotes_qlist td.quote {
 	width: 80%;
 }
