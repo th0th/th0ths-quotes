@@ -237,7 +237,7 @@ function th0ths_quotes_add_new()
                 ?>
                 <span><?php _e("New quote is successfully added to collection.", 'th0ths-quotes'); ?></span>
                 <div class="th0ths_quotes_cleanser"></div>
-                <span><?php printf(__('Click %shere%s to go to quote management page.', 'th0ths-quotes'), '<a href="admin.php?page=th0ths-quotes">' ,'</a>'); ?></span>
+                <span><?php printf(__('Click %shere%s to go to quote management page or %shere%s to add a new quote.', 'th0ths-quotes'), '<a href="admin.php?page=th0ths-quotes">' ,'</a>', '<a href="admin.php?page=th0ths-quotes-add-new">', '</a>'); ?></span>
                 <?php
             }
         }
