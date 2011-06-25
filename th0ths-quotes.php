@@ -264,7 +264,7 @@ function th0ths_quotes_add_new()
                 'owner' => $_POST['owner']
             );
             
-            if (empty($new_quote['quote']) && empty($new_quote['owner']))
+            if (empty($new_quote['quote']) || empty($new_quote['owner']))
             {
                 ?>
                 <script type="text/javascript">
