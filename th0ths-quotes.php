@@ -158,13 +158,34 @@ function th0ths_quotes_manage_quotes()
     {
 		if ($_POST['action'] == 'Submit')
 		{
-			$edited_quote = array(
-				'id' => $_GET['id'],
-				'quote' => $_POST['quote'],
-				'owner' => $_POST['owner']
-			);
 			
-			$wpdb->update($th0ths_quotes_plugin_table, $edited_quote, array('id' => $edited_quote['id']));
+			if (empty($_POST['owner']) || empty($_POST['quote']))
+			{
+				?>
+				<script type="text/javascript">
+					alert('<?php _e("You should fill both quote and owner sections.", 'th0ths-quotes'); ?>');
+					history.go(-1);
+                </script>
+                <?php
+			}
+			else
+			{			
+				$edited_quote = array(
+					'id' => $_GET['id'],
+					'quote' => $_POST['quote'],
+					'owner' => $_POST['owner']
+				);
+				
+				$wpdb->update($th0ths_quotes_plugin_table, $edited_quote, array('id' => $edited_quote['id']));
+				
+				?>
+				<div class="wrap">
+					<h2><?php _e("Edit Quote", 'th0ths-quotes'); ?></h2>
+					<span><?php _e("Quote is successfully updated.", 'th0ths-quotes'); ?></span>
+					<div class="th0ths_quotes_cleanser"></div>
+					<span><?php printf(__('Click %shere%s to go to quote management page.', 'th0ths-quotes'), '<a href="admin.php?page=th0ths-quotes">' ,'</a>', '<a href="admin.php?page=th0ths-quotes-add-new">', '</a>'); ?></span>
+                <?php
+			}
 		}
 		else
 		{
@@ -191,6 +212,7 @@ function th0ths_quotes_manage_quotes()
 					<a class="button" href="admin.php?page=th0ths-quotes"><?php _e("Go back", 'th0ths-quotes'); ?></a>
 				</div>
 			</form>
+			</div>
 			<?php
 		}
 	}
