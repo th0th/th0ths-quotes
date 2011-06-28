@@ -107,12 +107,12 @@ function th0ths_quotes_donate()
         <h2><?php _e("Donate", 'th0ths-quotes'); ?></h2>
         <p><?php printf(__('%sth0th\'s Quotes%s is a free <i>(both free as in beer and freedom)</i> plugin released under terms of %sGPL%s. However, if you liked this project you can support its development by a donation.', 'th0ths-quotes'), '<b>', '</b>', '<a target="_blank" href="http://www.gnu.org/licenses/gpl-3.0-standalone.html">', '</a>'); ?></p>
         
-        <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-            <input type="hidden" name="cmd" value="_s-xclick">
-            <input type="hidden" name="hosted_button_id" value="7D75SD2JLPCMQ">
-            <input type="image" src="https://www.paypalobjects.com/en_US/TR/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-            <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-        </form>
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="7D75SD2JLPCMQ">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG_global.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online.">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+		</form>
         
         <p><?php _e("You can use Paypal button to donate.", 'th0ths-quotes'); ?></p>
     </div>
