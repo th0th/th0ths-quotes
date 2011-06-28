@@ -1,18 +1,18 @@
 div.th0ths_quotes_cleanser {
-	clear: both;
+    clear: both;
 }
 
 div#th0ths_quotes_edit_quotes input.button {
-	margin-top: 14px;
+    margin-top: 14px;
 }
 
 table#th0ths_quotes_qlist th.sendToTrash {
-	width: 20px;
-	text-align: center;
+    width: 20px;
+    text-align: center;
 }
 
 table#th0ths_quotes_qlist th.sendToTrash input {
-	margin-left: 2px;
+    margin-left: 2px;
 }
 
 table#th0ths_quotes_qlist td.id {
@@ -21,38 +21,38 @@ table#th0ths_quotes_qlist td.id {
 }
 
 table#th0ths_quotes_qlist td.edit {
-	width: 18px;
+    width: 18px;
 }
 
 table#th0ths_quotes_qlist td.quote {
-	width: 80%;
+    width: 80%;
 }
 
 table#th0ths_quotes_qlist td.owner {
-	text-align: left;
+    text-align: left;
 }
 
 table#th0ths_quotes_qlist td.sendToTrash {
-	width: 20px;
-	text-align: center;
-	font-weight: bold;
+    width: 20px;
+    text-align: center;
+    font-weight: bold;
 }
 
 div#th0ths_quotes_new_quote {
-	width: 700px !important;
-	padding: 20px 20px 20px 30px;
+    width: 700px !important;
+    padding: 20px 20px 20px 30px;
 }
 
 div#th0ths_quotes_new_quote input {
-	margin-top: 6px;
-	margin-bottom: 14px;
+    margin-top: 6px;
+    margin-bottom: 14px;
 }
 
 div#th0ths_quotes_new_quote textarea {
-	margin-top: 8px;
-	margin-bottom: 14px;
-	width: 460px;
-	height: 60px;
+    margin-top: 8px;
+    margin-bottom: 14px;
+    width: 460px;
+    height: 60px;
 }
 
 div#th0ths_quotes_import_quotes {
