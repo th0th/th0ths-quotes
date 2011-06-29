@@ -48,6 +48,10 @@ div#th0ths_quotes_new_quote input {
     margin-bottom: 14px;
 }
 
+div#th0ths_quotes_new_quote input#source {
+    width: 460px;
+}
+
 div#th0ths_quotes_new_quote textarea {
     margin-top: 8px;
     margin-bottom: 14px;

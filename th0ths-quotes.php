@@ -291,7 +291,8 @@ function th0ths_quotes_add_new()
         {
             $new_quote = array (
                 'quote' => $_POST['quote'],
-                'owner' => $_POST['owner']
+                'owner' => $_POST['owner'],
+                'source' => $_POST['source']
             );
             
             if (empty($new_quote['quote']) || empty($new_quote['owner']))
@@ -329,6 +330,12 @@ function th0ths_quotes_add_new()
                 <div class="th0ths_quotes_cleanser"></div>
                 
                 <input type="text" name="owner" />
+                <div class="th0ths_quotes_cleanser"></div>
+                
+                <span><?php _e("Source", 'th0ths-quotes'); ?></span>
+                <div class="th0ths_quotes_cleanser"></div>
+                
+                <input id="source" type="text" name="source" value="http://" />
                 <div class="th0ths_quotes_cleanser"></div>
                 
                 <input name="action" class="button" type="submit" value="<?php _e("Add", 'th0ths-quotes'); ?>" />
