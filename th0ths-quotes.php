@@ -513,14 +513,18 @@ function th0ths_quotes_trash()
                     <thead>
                         <tr>
                             <th class="sendToTrash"><input type="checkbox" onClick="checkAll('quoteCB',this)" /></th>
-                            <th><?php _e("Quote", 'th0ths-quotes'); ?></th>
-                            <th><?php _e("Owner", 'th0ths-quotes'); ?></th>
+                                <th><?php _e("ID", 'th0ths-quotes'); ?></th>
+                                <th><?php _e("Quote", 'th0ths-quotes'); ?></th>
+                                <th><?php _e("Owner", 'th0ths-quotes'); ?></th>
+                                <th><?php _e("Source", 'th0ths-quotes'); ?></th>
                         </tr>
                         <?php foreach ($quotes as $quote) { ?>
                         <tr>
-                            <td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
-                            <td class="quote"><?php echo $quote['quote']; ?></td>
-                            <td class="owner"><?php echo $quote['owner']; ?></td>
+                                <td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
+                                <td class="id"><?php echo $quote['id']; ?></td>
+                                <td class="quote"><?php echo $quote['quote']; ?></td>
+                                <td class="owner"><?php echo $quote['owner']; ?></td>
+                                <td class="source"><?php if (th0ths_quotes_is_valid_source($quote['source'])) { ?><a title="<?php echo $quote['source']; ?>" href="<?php echo $quote['source']; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/link.png" /></a><?php } else {?><a title="No link"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/nolink.png" /></a><?php } ?></td>
                         </tr>
                         <?php } ?>
                     </thead>
