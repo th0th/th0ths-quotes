@@ -564,7 +564,7 @@ function th0ths_quotes_shortcode($atts)
     {
         $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE id = '$id'", ARRAY_A);
         
-        if (!empty($quotes))
+        if (!empty($quotes) && $quotes[0]['status'] == 1)
         {
             $quote = $quotes[0];
         }
