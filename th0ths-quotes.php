@@ -573,7 +573,8 @@ function th0ths_quotes_shortcode($atts)
         {
             $quote = array(
                     'quote' => __("There is no such quote with this ID.", 'th0ths-quotes'),
-                    'owner' => __("Inspector Gadget", 'th0ths-quotes')
+                    'owner' => __("Inspector Gadget", 'th0ths-quotes'),
+                    'source' => ''
                 );
         }
     }
@@ -582,7 +583,10 @@ function th0ths_quotes_shortcode($atts)
         <div class="<?php echo $class; ?>">
             <blockquote>
                 <div id="th0ths_quotes_sc_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div>
-                <div id="th0ths_quotes_sc_owner" style="text-align: right;">-<?php echo $quote['owner']; ?></div>
+                <div id="th0ths_quotes_sc_owner" style="text-align: right;">
+                    <?php if (th0ths_quotes_is_valid_source($quote['source'])) { ?><a href="<?php echo $quote['source']; ?>" target="_blank">-<?php echo $quote['owner']; ?></a><?php } else { ?>
+                    -<?php echo $quote['owner']; } ?>
+                </div>
             </blockquote>
         </div>
     <?php
