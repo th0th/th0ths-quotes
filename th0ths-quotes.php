@@ -76,9 +76,17 @@ function th0ths_quotes_activate()
 /* Plugin upgrade function */
 function th0ths_quotes_upgrade_check()
 {
-    global $th0ths_quotes_plugin_version;
+    global $th0ths_quotes_plugin_version, $th0ths_quotes_plugin_table, $wpdb;
     
     $current_version = get_option("th0ths_quotes_version");
+    
+    if ($current_version <= 0.7)
+    {
+        $sql = "ALTER TABLE $th0ths_quotes_plugin_table ADD source VARCHAR(200);";
+        
+        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
+        dbDelta($sql);
+    }
     
     if ($current_version != $th0ths_quotes_plugin_version)
     {
