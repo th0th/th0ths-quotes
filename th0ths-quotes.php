@@ -401,6 +401,9 @@ function th0ths_quotes_import_export()
                 $owner = $quote->getElementsByTagName("owner");
                 $imported_quotes[$i]['owner'] = $owner->item(0)->nodeValue;
                 
+                $source = $quote->getElementsByTagName("source");
+                $imported_quotes[$i]['source'] = $source->item(0)->nodeValue;
+                
                 $i = $i + 1;
             }
             
