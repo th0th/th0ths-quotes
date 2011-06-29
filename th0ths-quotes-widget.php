@@ -36,7 +36,11 @@ class th0ths_Quotes_Widget extends WP_Widget {
                         else {
                                 echo $before_title . __("Quotes" , 'th0ths-quotes') . $after_title; } ?>
                   <div id="th0ths_quotes_widget_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div>
-                  <div id="th0ths_quotes_widget_owner" style="text-align: right;"><?php if (th0ths_quotes_is_valid_source($quote['source'])) { ?>hey<?php } ?>-<?php echo $quote['owner']; ?></div>
+                  <div id="th0ths_quotes_widget_owner" style="text-align: right;">
+                      <?php if (th0ths_quotes_is_valid_source($quote['source'])) { ?><a href="<?php echo $quote['source']; ?>" target="_blank">-<?php echo $quote['owner']; ?></a>
+                      <?php } else  { ?>
+                      -<?php echo $quote['owner']; } ?>
+                  </div>
               <?php echo $after_widget; ?>
         <?php
     }
