@@ -52,6 +52,7 @@ The plugin uses its own database table to store quotes. And Wordpress doesn't ha
 
 = 0.8 =
 * Sources for quotes feature is implemented.
+* Some bugfixing.
 
 = 0.7 =
 * Editing quotes feature is implemented.
