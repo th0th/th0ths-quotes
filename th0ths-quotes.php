@@ -181,7 +181,8 @@ function th0ths_quotes_manage_quotes()
                 $edited_quote = array(
                     'id' => $_GET['id'],
                     'quote' => $_POST['quote'],
-                    'owner' => $_POST['owner']
+                    'owner' => $_POST['owner'],
+                    'source' => $_POST['source']
                 );
                 
                 $wpdb->update($th0ths_quotes_plugin_table, $edited_quote, array('id' => $edited_quote['id']));
