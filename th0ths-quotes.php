@@ -467,6 +467,12 @@ function th0ths_quotes_export_to_xml()
         
         $quote_owner_c_element = $exported->createTextNode($quote['owner']);
         $quote_owner_element->appendChild($quote_owner_c_element);
+        
+        $quote_source_element = $exported->createElement('source');
+        $quote_element->appendChild($quote_source_element);
+        
+        $quote_source_c_element = $exported->createTextNode($quote['source']);
+        $quote_source_element->appendChild($quote_source_c_element);
     }
     
     echo $exported->saveXML();
