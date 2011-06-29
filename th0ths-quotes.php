@@ -216,6 +216,12 @@ function th0ths_quotes_manage_quotes()
                     <input type="text" name="owner" value="<?php echo $quote[0]['owner']; ?>" />
                     <div class="th0ths_quotes_cleanser"></div>
                     
+                    <span><?php _e("Source", 'th0ths-quotes'); ?></span>
+                    <div class="th0ths_quotes_cleanser"></div>
+                    
+                    <input id="source" type="text" name="source" value="<?php echo $quote[0]['source']; ?>" /><span class="description">(<?php _e("Optional", 'th0ths-quotes'); ?>)</span>
+                    <div class="th0ths_quotes_cleanser"></div>
+                    
                     <input name="action" class="button" type="submit" value="<?php _e("Submit", 'th0ths-quotes'); ?>" />
                     <a class="button" href="admin.php?page=th0ths-quotes"><?php _e("Go back", 'th0ths-quotes'); ?></a>
                 </div>
@@ -255,6 +261,7 @@ function th0ths_quotes_manage_quotes()
                                 <th><?php _e("Edit", 'th0ths-quotes'); ?></th>
                                 <th><?php _e("Quote", 'th0ths-quotes'); ?></th>
                                 <th><?php _e("Owner", 'th0ths-quotes'); ?></th>
+                                <th><?php _e("Source", 'th0ths-quotes'); ?></th>
                             </tr>
                             <?php foreach ($quotes as $quote) { ?>
                             <tr>
@@ -263,6 +270,7 @@ function th0ths_quotes_manage_quotes()
                                 <td class="edit"><a href="<?php echo add_query_arg(array("action" => "edit_quote", "id" => $quote['id']), admin_url() . "admin.php?page=th0ths-quotes"); ?>"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/edit.png" /></a></td>
                                 <td class="quote"><?php echo $quote['quote']; ?></td>
                                 <td class="owner"><?php echo $quote['owner']; ?></td>
+                                <td class="source"><?php if (th0ths_quotes_is_valid_source($quote['source'])) { ?><a title="<?php echo $quote['source']; ?>" href="<?php echo $quote['source']; ?>"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/link.png" /></a><?php } else {?><a title="No link"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/nolink.png" /></a><?php } ?></td>
                             </tr>
                             <?php } ?>
                         </thead>
@@ -335,7 +343,7 @@ function th0ths_quotes_add_new()
                 <span><?php _e("Source", 'th0ths-quotes'); ?></span>
                 <div class="th0ths_quotes_cleanser"></div>
                 
-                <input id="source" type="text" name="source" value="http://" />
+                <input id="source" type="text" name="source" value="http://" /><span class="description">(<?php _e("Optional", 'th0ths-quotes'); ?>)</span>
                 <div class="th0ths_quotes_cleanser"></div>
                 
                 <input name="action" class="button" type="submit" value="<?php _e("Add", 'th0ths-quotes'); ?>" />
@@ -573,6 +581,20 @@ function th0ths_quotes_shortcode($atts)
             </blockquote>
         </div>
     <?php
+}
+
+function th0ths_quotes_is_valid_source($url)
+{
+    $urlregex = "^(https?|ftp)\:\/\/([a-z0-9+!*(),;?&=\$_.-]+(\:[a-z0-9+!*(),;?&=\$_.-]+)?@)?[a-z0-9+\$_-]+(\.[a-z0-9+\$_-]+)*(\:[0-9]{2,5})?(\/([a-z0-9+\$_-]\.?)+)*\/?(\?[a-z+&\$_.-][a-z0-9;:@/&%=+\$_.-]*)?(#[a-z_.-][a-z0-9+\$_.-]*)?\$";
+    
+    if (eregi($urlregex, $url))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 /* registering functions */

@@ -32,6 +32,10 @@ table#th0ths_quotes_qlist td.owner {
     text-align: left;
 }
 
+table#th0ths_quotes_qlist td.source {
+    text-align: center;
+}
+
 table#th0ths_quotes_qlist td.sendToTrash {
     width: 20px;
     text-align: center;
