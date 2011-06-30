@@ -45,6 +45,7 @@ function th0ths_quotes_activate()
           quote VARCHAR(255) NOT NULL,
           owner VARCHAR(100) NOT NULL,
           status INT(4) DEFAULT '1',
+          source VARCHAR(200),
           UNIQUE KEY id (id)
         );";
         
