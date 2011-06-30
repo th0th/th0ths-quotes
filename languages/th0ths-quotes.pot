@@ -2,9 +2,9 @@
 # This file is distributed under the same license as the th0th's quotes package.
 msgid ""
 msgstr ""
-"Project-Id-Version: th0th's quotes 0.5\n"
+"Project-Id-Version: th0th's quotes 0.8\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/th0ths-quotes\n"
-"POT-Creation-Date: 2011-06-10 03:46:32+00:00\n"
+"POT-Creation-Date: 2011-06-30 10:46:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -12,127 +12,163 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: th0ths-quotes-widget.php:37
-msgid "Quotes"
-msgstr ""
-
-#: th0ths-quotes-widget.php:54
-msgid "Title:"
-msgstr ""
-
-#: th0ths-quotes.php:107 th0ths-quotes.php:141
+#: th0ths-quotes.php:115 th0ths-quotes.php:149
 msgid "Donate"
 msgstr ""
 
-#: th0ths-quotes.php:108
+#: th0ths-quotes.php:116
 msgid ""
 "%sth0th's Quotes%s is a free <i>(both free as in beer and freedom)</i> "
 "plugin released under terms of %sGPL%s. However, if you liked this project "
 "you can support its development by a donation."
 msgstr ""
 
-#: th0ths-quotes.php:117
+#: th0ths-quotes.php:125
 msgid "You can use Paypal button to donate."
 msgstr ""
 
-#: th0ths-quotes.php:126
+#: th0ths-quotes.php:134
 msgid "th0th's Quotes"
 msgstr ""
 
-#: th0ths-quotes.php:129 th0ths-quotes.php:176
+#: th0ths-quotes.php:137 th0ths-quotes.php:252
 msgid "Manage Quotes"
 msgstr ""
 
-#: th0ths-quotes.php:132 th0ths-quotes.php:177
+#: th0ths-quotes.php:140 th0ths-quotes.php:253
 msgid "Add New"
 msgstr ""
 
-#: th0ths-quotes.php:135 th0ths-quotes.php:279
+#: th0ths-quotes.php:143 th0ths-quotes.php:367
 msgid "Import/Export"
 msgstr ""
 
-#: th0ths-quotes.php:138 th0ths-quotes.php:422
+#: th0ths-quotes.php:146 th0ths-quotes.php:519
 msgid "Trash"
 msgstr ""
 
-#: th0ths-quotes.php:159 th0ths-quotes.php:199
-msgid "Send Selected Quotes to Trash"
-msgstr ""
-
-#: th0ths-quotes.php:185
-msgid "ID"
-msgstr ""
-
-#: th0ths-quotes.php:186 th0ths-quotes.php:250 th0ths-quotes.php:429
-msgid "Quote"
-msgstr ""
-
-#: th0ths-quotes.php:187 th0ths-quotes.php:256 th0ths-quotes.php:430
-msgid "Owner"
-msgstr ""
-
-#: th0ths-quotes.php:213
-msgid "Add New Quote"
-msgstr ""
-
-#: th0ths-quotes.php:218 th0ths-quotes.php:262
-msgid "Add"
-msgstr ""
-
-#: th0ths-quotes.php:229
+#: th0ths-quotes.php:174 th0ths-quotes.php:311
 msgid "You should fill both quote and owner sections."
 msgstr ""
 
-#: th0ths-quotes.php:238
-msgid "New quote is successfully added to collection."
+#: th0ths-quotes.php:192 th0ths-quotes.php:204
+msgid "Edit Quote"
 msgstr ""
 
-#: th0ths-quotes.php:240
+#: th0ths-quotes.php:193
+msgid "Quote is successfully updated."
+msgstr ""
+
+#: th0ths-quotes.php:195
 msgid "Click %shere%s to go to quote management page."
 msgstr ""
 
-#: th0ths-quotes.php:287
+#: th0ths-quotes.php:208 th0ths-quotes.php:263 th0ths-quotes.php:332
+#: th0ths-quotes.php:527
+msgid "Quote"
+msgstr ""
+
+#: th0ths-quotes.php:214 th0ths-quotes.php:264 th0ths-quotes.php:338
+#: th0ths-quotes.php:528
+msgid "Owner"
+msgstr ""
+
+#: th0ths-quotes.php:220 th0ths-quotes.php:265 th0ths-quotes.php:344
+#: th0ths-quotes.php:529
+msgid "Source"
+msgstr ""
+
+#: th0ths-quotes.php:223 th0ths-quotes.php:347
+msgid "Optional"
+msgstr ""
+
+#: th0ths-quotes.php:226
+msgid "Submit"
+msgstr ""
+
+#: th0ths-quotes.php:227
+msgid "Go back"
+msgstr ""
+
+#: th0ths-quotes.php:236 th0ths-quotes.php:279
+msgid "Send Selected Quotes to Trash"
+msgstr ""
+
+#: th0ths-quotes.php:261 th0ths-quotes.php:526
+msgid "ID"
+msgstr ""
+
+#: th0ths-quotes.php:262
+msgid "Edit"
+msgstr ""
+
+#: th0ths-quotes.php:294
+msgid "Add New Quote"
+msgstr ""
+
+#: th0ths-quotes.php:299 th0ths-quotes.php:350
+msgid "Add"
+msgstr ""
+
+#: th0ths-quotes.php:320
+msgid "New quote is successfully added to collection."
+msgstr ""
+
+#: th0ths-quotes.php:322
+msgid ""
+"Click %shere%s to go to quote management page or %shere%s to add a new quote."
+msgstr ""
+
+#: th0ths-quotes.php:375
 msgid "You should select a quote file to import quotes."
 msgstr ""
 
-#: th0ths-quotes.php:296
+#: th0ths-quotes.php:384
 msgid "You can import quotes only from an XML file."
 msgstr ""
 
-#: th0ths-quotes.php:324
+#: th0ths-quotes.php:415
 msgid "Quotes are imported. You can see new quotes in 'Manage Quotes' page."
 msgstr ""
 
-#: th0ths-quotes.php:331 th0ths-quotes.php:337
+#: th0ths-quotes.php:422 th0ths-quotes.php:428
 msgid "Import Quotes"
 msgstr ""
 
-#: th0ths-quotes.php:334
+#: th0ths-quotes.php:425
 msgid "Filename"
 msgstr ""
 
-#: th0ths-quotes.php:340
+#: th0ths-quotes.php:431
 msgid "Export Quotes"
 msgstr ""
 
-#: th0ths-quotes.php:342
+#: th0ths-quotes.php:433
 msgid "Click here to export quotes"
 msgstr ""
 
-#: th0ths-quotes.php:395 th0ths-quotes.php:441
+#: th0ths-quotes.php:492 th0ths-quotes.php:542
 msgid "Restore Selected Quotes"
 msgstr ""
 
-#: th0ths-quotes.php:405 th0ths-quotes.php:442
+#: th0ths-quotes.php:502 th0ths-quotes.php:543
 msgid "Delete Selected Quotes Permanently"
 msgstr ""
 
-#: th0ths-quotes.php:483
+#: th0ths-quotes.php:584
 msgid "There is no such quote with this ID."
 msgstr ""
 
-#: th0ths-quotes.php:484
+#: th0ths-quotes.php:585
 msgid "Inspector Gadget"
+msgstr ""
+
+#: th0ths-quotes-widget.php:37
+msgid "Quotes"
+msgstr ""
+
+#: th0ths-quotes-widget.php:58
+msgid "Title:"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
@@ -140,7 +176,7 @@ msgid "th0th's quotes"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "https://returnfalse.net/log/"
+msgid "https://returnfalse.net/log/th0ths-quotes-wordpress-plugin/"
 msgstr ""
 
 #. Description of the plugin/theme
