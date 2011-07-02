@@ -1,7 +1,7 @@
 <?php
 
 /*
-Plugin Name: th0th's quotes
+Plugin Name: th0th's Quotes
 Plugin URI: https://returnfalse.net/log/th0ths-quotes-wordpress-plugin/
 Description: A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
 Version: 0.82
