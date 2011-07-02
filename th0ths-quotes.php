@@ -81,7 +81,7 @@ function th0ths_quotes_upgrade_check()
     
     $current_version = get_option("th0ths_quotes_version");
     
-    if ($current_version <= 0.7)
+    if(!$wpdb->query("SELECT source FROM $th0ths_quotes_plugin_table"))
     {
         $sql = "ALTER TABLE $th0ths_quotes_plugin_table ADD source VARCHAR(200);";
         
