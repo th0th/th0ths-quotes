@@ -81,12 +81,18 @@ function th0ths_quotes_upgrade_check()
     
     $current_version = get_option("th0ths_quotes_version");
     
-    if(!$wpdb->query("SELECT source FROM $th0ths_quotes_plugin_table"))
+    $mysql_columns_list = $wpdb->get_results("SHOW COLUMNS FROM $th0ths_quotes_plugin_table", 'ARRAY_A');
+    
+    $columns = array();
+    
+    foreach ($mysql_columns_list as $column)
     {
-        $sql = "ALTER TABLE $th0ths_quotes_plugin_table ADD source VARCHAR(200);";
-        
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
+        $columns[] = $column['Field'];
+    }
+    
+    if(!in_array('source', $columns))
+    {
+        $wpdb->query("ALTER TABLE $th0ths_quotes_plugin_table ADD source VARCHAR(200);");
     }
     
     if ($current_version != $th0ths_quotes_plugin_version)
