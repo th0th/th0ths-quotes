@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: th0th's quotes 0.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/th0ths-quotes\n"
-"POT-Creation-Date: 2011-06-30 10:46:19+00:00\n"
-"PO-Revision-Date: 2011-06-30 13:49+0200\n"
+"POT-Creation-Date: 2011-07-05 15:49:30+00:00\n"
+"PO-Revision-Date: 2011-07-05 18:52+0200\n"
 "Last-Translator: H.Gökhan Sarı <th0th@returnfalse.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -13,170 +13,177 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: th0ths-quotes.php:115
-#: th0ths-quotes.php:149
+#: th0ths-quotes.php:122
+#: th0ths-quotes.php:156
 msgid "Donate"
 msgstr "Bağış"
 
-#: th0ths-quotes.php:116
+#: th0ths-quotes.php:123
 msgid "%sth0th's Quotes%s is a free <i>(both free as in beer and freedom)</i> plugin released under terms of %sGPL%s. However, if you liked this project you can support its development by a donation."
 msgstr "%sth0th's Quotes%s %sGPL%s lisansı ile yayınlanan özgür ve ücretsiz bir eklentidir. Bu projenin gelişimini bağış yaparak destekleyebilirsiniz."
 
-#: th0ths-quotes.php:125
+#: th0ths-quotes.php:132
 msgid "You can use Paypal button to donate."
 msgstr "Bağış yapmak için Paypal butonunu kullanabilirsiniz."
 
-#: th0ths-quotes.php:134
+#. #-#-#-#-#  plugin.pot (th0th's Quotes 0.9)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: th0ths-quotes.php:141
 msgid "th0th's Quotes"
 msgstr "th0th's Quotes"
 
-#: th0ths-quotes.php:137
-#: th0ths-quotes.php:252
+#: th0ths-quotes.php:144
+#: th0ths-quotes.php:264
 msgid "Manage Quotes"
 msgstr "Alıntıları Yönet"
 
-#: th0ths-quotes.php:140
-#: th0ths-quotes.php:253
+#: th0ths-quotes.php:147
+#: th0ths-quotes.php:265
 msgid "Add New"
 msgstr "Yeni Ekle"
 
-#: th0ths-quotes.php:143
-#: th0ths-quotes.php:367
+#: th0ths-quotes.php:150
+#: th0ths-quotes.php:385
 msgid "Import/Export"
 msgstr "İçeri/Dışarı Aktar"
 
-#: th0ths-quotes.php:146
-#: th0ths-quotes.php:519
+#: th0ths-quotes.php:153
+#: th0ths-quotes.php:537
 msgid "Trash"
 msgstr "Çöp Kutusu"
 
-#: th0ths-quotes.php:174
-#: th0ths-quotes.php:311
+#: th0ths-quotes.php:181
+#: th0ths-quotes.php:326
 msgid "You should fill both quote and owner sections."
 msgstr "Alıntı ve sahibi kısımlarını doldurmalısınız."
 
-#: th0ths-quotes.php:192
-#: th0ths-quotes.php:204
+#: th0ths-quotes.php:199
+#: th0ths-quotes.php:211
 msgid "Edit Quote"
 msgstr "Alıntıyı Düzenle"
 
-#: th0ths-quotes.php:193
+#: th0ths-quotes.php:200
 msgid "Quote is successfully updated."
 msgstr "Alıntı güncellendi."
 
-#: th0ths-quotes.php:195
+#: th0ths-quotes.php:202
 msgid "Click %shere%s to go to quote management page."
 msgstr "Alıntı yönetim sayfasında gitmek için %sburayı%s tıklayın."
 
-#: th0ths-quotes.php:208
-#: th0ths-quotes.php:263
-#: th0ths-quotes.php:332
-#: th0ths-quotes.php:527
+#: th0ths-quotes.php:215
+#: th0ths-quotes.php:275
+#: th0ths-quotes.php:347
+#: th0ths-quotes.php:545
 msgid "Quote"
 msgstr "Alıntı"
 
-#: th0ths-quotes.php:214
-#: th0ths-quotes.php:264
-#: th0ths-quotes.php:338
-#: th0ths-quotes.php:528
+#: th0ths-quotes.php:221
+#: th0ths-quotes.php:276
+#: th0ths-quotes.php:353
+#: th0ths-quotes.php:546
 msgid "Owner"
 msgstr "Sahibi"
 
-#: th0ths-quotes.php:220
-#: th0ths-quotes.php:265
-#: th0ths-quotes.php:344
-#: th0ths-quotes.php:529
+#: th0ths-quotes.php:227
+#: th0ths-quotes.php:277
+#: th0ths-quotes.php:359
+#: th0ths-quotes.php:547
 msgid "Source"
 msgstr "Kaynak"
 
-#: th0ths-quotes.php:223
-#: th0ths-quotes.php:347
+#: th0ths-quotes.php:232
+#: th0ths-quotes.php:362
 msgid "Optional"
 msgstr "Opsiyonel"
 
-#: th0ths-quotes.php:226
+#: th0ths-quotes.php:235
+#: th0ths-quotes.php:365
+msgid "Open source link in new page"
+msgstr "Kaynak bağlantısını yeni pencerede aç"
+
+#: th0ths-quotes.php:238
 msgid "Submit"
 msgstr "Gönder"
 
-#: th0ths-quotes.php:227
+#: th0ths-quotes.php:239
 msgid "Go back"
 msgstr "Geri git"
 
-#: th0ths-quotes.php:236
-#: th0ths-quotes.php:279
+#: th0ths-quotes.php:248
+#: th0ths-quotes.php:294
 msgid "Send Selected Quotes to Trash"
 msgstr "Seçilen Alıntıları Çöp Kutusuna Gönder"
 
-#: th0ths-quotes.php:261
-#: th0ths-quotes.php:526
+#: th0ths-quotes.php:273
+#: th0ths-quotes.php:544
 msgid "ID"
 msgstr "ID"
 
-#: th0ths-quotes.php:262
+#: th0ths-quotes.php:274
 msgid "Edit"
 msgstr "Düzenle"
 
-#: th0ths-quotes.php:294
+#: th0ths-quotes.php:309
 msgid "Add New Quote"
 msgstr "Yeni Alıntı Ekle"
 
-#: th0ths-quotes.php:299
-#: th0ths-quotes.php:350
+#: th0ths-quotes.php:314
+#: th0ths-quotes.php:368
 msgid "Add"
 msgstr "Ekle"
 
-#: th0ths-quotes.php:320
+#: th0ths-quotes.php:335
 msgid "New quote is successfully added to collection."
 msgstr "Yeni alıntı başarıyla koleksiyona eklendi."
 
-#: th0ths-quotes.php:322
+#: th0ths-quotes.php:337
 msgid "Click %shere%s to go to quote management page or %shere%s to add a new quote."
 msgstr "Alıntı yönetim sayfasında gitmek için %sburayı%s tıklayın. Ya da %sburayı%s tıklayarak yeni bir alıntı ekleyin."
 
-#: th0ths-quotes.php:375
+#: th0ths-quotes.php:393
 msgid "You should select a quote file to import quotes."
 msgstr "Alıntıları içeri aktarmak için bir dosya seçmelisiniz."
 
-#: th0ths-quotes.php:384
+#: th0ths-quotes.php:402
 msgid "You can import quotes only from an XML file."
 msgstr "Alıntıları içeri aktarmak için yalnızca XML dosyalarını kullanmalısınız."
 
-#: th0ths-quotes.php:415
+#: th0ths-quotes.php:433
 msgid "Quotes are imported. You can see new quotes in 'Manage Quotes' page."
 msgstr "Alıntılar içeri aktarıldı. Eklenen alıntıları 'Alıntıları Yönet' sayfasında görebilirsiniz."
 
-#: th0ths-quotes.php:422
-#: th0ths-quotes.php:428
+#: th0ths-quotes.php:440
+#: th0ths-quotes.php:446
 msgid "Import Quotes"
 msgstr "Alıntıları İçeri Aktar"
 
-#: th0ths-quotes.php:425
+#: th0ths-quotes.php:443
 msgid "Filename"
 msgstr "Dosya"
 
-#: th0ths-quotes.php:431
+#: th0ths-quotes.php:449
 msgid "Export Quotes"
 msgstr "Alıntıları Dışarı Aktar"
 
-#: th0ths-quotes.php:433
+#: th0ths-quotes.php:451
 msgid "Click here to export quotes"
 msgstr "Alıntıları dışarı aktarmak için burayı tıklayın"
 
-#: th0ths-quotes.php:492
-#: th0ths-quotes.php:542
+#: th0ths-quotes.php:510
+#: th0ths-quotes.php:563
 msgid "Restore Selected Quotes"
 msgstr "Seçilen Alıntıları Geri Getir"
 
-#: th0ths-quotes.php:502
-#: th0ths-quotes.php:543
+#: th0ths-quotes.php:520
+#: th0ths-quotes.php:564
 msgid "Delete Selected Quotes Permanently"
 msgstr "Seçilen Alıntıları Kalıcı Olarak Sil"
 
-#: th0ths-quotes.php:584
+#: th0ths-quotes.php:605
 msgid "There is no such quote with this ID."
 msgstr "Bu ID'ye sahip bir alıntı yok."
 
-#: th0ths-quotes.php:585
+#: th0ths-quotes.php:606
 msgid "Inspector Gadget"
 msgstr "Müfettiş Gadget"
 
@@ -184,13 +191,9 @@ msgstr "Müfettiş Gadget"
 msgid "Quotes"
 msgstr "Alıntılar"
 
-#: th0ths-quotes-widget.php:58
+#: th0ths-quotes-widget.php:61
 msgid "Title:"
 msgstr "Başlık:"
-
-#. Plugin Name of the plugin/theme
-msgid "th0th's quotes"
-msgstr "th0th's quotes"
 
 #. Plugin URI of the plugin/theme
 msgid "https://returnfalse.net/log/th0ths-quotes-wordpress-plugin/"
@@ -208,3 +211,5 @@ msgstr "Hüseyin Gökhan Sarı"
 msgid "http://returnfalse.net"
 msgstr "http://returnfalse.net"
 
+#~ msgid "th0th's quotes"
+#~ msgstr "th0th's quotes"
