@@ -614,7 +614,10 @@ function th0ths_quotes_shortcode($atts)
             <blockquote>
                 <div id="th0ths_quotes_sc_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div>
                 <div id="th0ths_quotes_sc_owner" style="text-align: right;">
-                    <?php if (th0ths_quotes_is_valid_source($quote['source'])) { ?><a href="<?php echo $quote['source']; ?>" target="_blank">-<?php echo $quote['owner']; ?></a><?php } else { ?>
+                    
+                    <?php $source_array = unserialize($quote['source']); ?>
+                    
+                    <?php if (th0ths_quotes_is_valid_source($source_array[0])) { ?><a href="<?php echo $source_array[0]; ?>" <?php if ($source_array[1] == 'true') { ?>target="_blank"<?php } ?>>-<?php echo $quote['owner']; ?></a><?php } else { ?>
                     -<?php echo $quote['owner']; } ?>
                 </div>
             </blockquote>
