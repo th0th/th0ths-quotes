@@ -230,6 +230,9 @@ function th0ths_quotes_manage_quotes()
                     <input id="source" type="text" name="source" value="<?php echo $quote[0]['source']; ?>" /><span class="description">(<?php _e("Optional", 'th0ths-quotes'); ?>)</span>
                     <div class="th0ths_quotes_cleanser"></div>
                     
+                    <label><input type="checkbox" name="open_in_new_page" value="true" /><?php _e("Open source link in new page", 'th0ths-quotes'); ?></label>
+                    <div class="th0ths_quotes_cleanser"></div>
+                    
                     <input name="action" class="button" type="submit" value="<?php _e("Submit", 'th0ths-quotes'); ?>" />
                     <a class="button" href="admin.php?page=th0ths-quotes"><?php _e("Go back", 'th0ths-quotes'); ?></a>
                 </div>
@@ -352,6 +355,9 @@ function th0ths_quotes_add_new()
                 <div class="th0ths_quotes_cleanser"></div>
                 
                 <input id="source" type="text" name="source" value="http://" /><span class="description">(<?php _e("Optional", 'th0ths-quotes'); ?>)</span>
+                <div class="th0ths_quotes_cleanser"></div>
+                
+                <label><input type="checkbox" name="open_in_new_page" value="true" /><?php _e("Open source link in new page", 'th0ths-quotes'); ?></label>
                 <div class="th0ths_quotes_cleanser"></div>
                 
                 <input name="action" class="button" type="submit" value="<?php _e("Add", 'th0ths-quotes'); ?>" />
