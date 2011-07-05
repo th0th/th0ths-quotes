@@ -189,7 +189,7 @@ function th0ths_quotes_manage_quotes()
                     'id' => $_GET['id'],
                     'quote' => $_POST['quote'],
                     'owner' => $_POST['owner'],
-                    'source' => $_POST['source']
+                    'source' => serialize(array($_POST['source'], $_POST['open_in_new_page']))
                 );
                 
                 $wpdb->update($th0ths_quotes_plugin_table, $edited_quote, array('id' => $edited_quote['id']));
@@ -227,10 +227,12 @@ function th0ths_quotes_manage_quotes()
                     <span><?php _e("Source", 'th0ths-quotes'); ?></span>
                     <div class="th0ths_quotes_cleanser"></div>
                     
-                    <input id="source" type="text" name="source" value="<?php echo $quote[0]['source']; ?>" /><span class="description">(<?php _e("Optional", 'th0ths-quotes'); ?>)</span>
+                    <?php $source_array = unserialize($quote[0]['source']); ?>
+                    
+                    <input id="source" type="text" name="source" value="<?php echo $source_array[0]; ?>" /><span class="description">(<?php _e("Optional", 'th0ths-quotes'); ?>)</span>
                     <div class="th0ths_quotes_cleanser"></div>
                     
-                    <label><input type="checkbox" name="open_in_new_page" value="true" /><?php _e("Open source link in new page", 'th0ths-quotes'); ?></label>
+                    <label><input type="checkbox" name="open_in_new_page" value="true" <?php if ($source_array[1] == 'true') { ?>checked="checked"<?php } ?> /><?php _e("Open source link in new page", 'th0ths-quotes'); ?></label>
                     <div class="th0ths_quotes_cleanser"></div>
                     
                     <input name="action" class="button" type="submit" value="<?php _e("Submit", 'th0ths-quotes'); ?>" />
@@ -281,7 +283,10 @@ function th0ths_quotes_manage_quotes()
                                 <td class="edit"><a href="<?php echo add_query_arg(array("action" => "edit_quote", "id" => $quote['id']), admin_url() . "admin.php?page=th0ths-quotes"); ?>"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/edit.png" /></a></td>
                                 <td class="quote"><?php echo $quote['quote']; ?></td>
                                 <td class="owner"><?php echo $quote['owner']; ?></td>
-                                <td class="source"><?php if (th0ths_quotes_is_valid_source($quote['source'])) { ?><a title="<?php echo $quote['source']; ?>" href="<?php echo $quote['source']; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/link.png" /></a><?php } else {?><a title="No link"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/nolink.png" /></a><?php } ?></td>
+                                
+                                <?php $source_array = unserialize($quote['source']); ?>
+                                
+                                <td class="source"><?php if (th0ths_quotes_is_valid_source($source_array[0])) { ?><a title="<?php echo $source_array[0]; ?>" href="<?php echo $source_array[0]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/link.png" /></a><?php } else {?><a title="No link"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/nolink.png" /></a><?php } ?></td>
                             </tr>
                             <?php } ?>
                         </thead>
@@ -311,7 +316,7 @@ function th0ths_quotes_add_new()
             $new_quote = array (
                 'quote' => $_POST['quote'],
                 'owner' => $_POST['owner'],
-                'source' => $_POST['source']
+                'source' => serialize(array($_POST['source'], $_POST['open_in_new_page']))
             );
             
             if (empty($new_quote['quote']) || empty($new_quote['owner']))
@@ -547,7 +552,10 @@ function th0ths_quotes_trash()
                                 <td class="id"><?php echo $quote['id']; ?></td>
                                 <td class="quote"><?php echo $quote['quote']; ?></td>
                                 <td class="owner"><?php echo $quote['owner']; ?></td>
-                                <td class="source"><?php if (th0ths_quotes_is_valid_source($quote['source'])) { ?><a title="<?php echo $quote['source']; ?>" href="<?php echo $quote['source']; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/link.png" /></a><?php } else {?><a title="No link"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/nolink.png" /></a><?php } ?></td>
+                                
+                                <?php $source_array = unserialize($quote['source']); ?>
+                                
+                                <td class="source"><?php if (th0ths_quotes_is_valid_source($source_array[0])) { ?><a title="<?php echo $source_array[0]; ?>" href="<?php echo $source_array[0]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/link.png" /></a><?php } else {?><a title="No link"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/nolink.png" /></a><?php } ?></td>
                         </tr>
                         <?php } ?>
                     </thead>
