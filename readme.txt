@@ -1,9 +1,9 @@
 === th0th's Quotes ===
 Contributors: th0th
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7D75SD2JLPCMQ
-Tags: widget, sidebar
+Tags: widget, sidebar, shortcode, quote
 Requires at least: 3.1.2
-Tested up to: 3.1.3
+Tested up to: 3.2
 Stable tag: 0.9
 
 A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
