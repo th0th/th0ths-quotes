@@ -492,8 +492,24 @@ function th0ths_quotes_export_to_xml()
         $quote_source_element = $exported->createElement('source');
         $quote_element->appendChild($quote_source_element);
         
-        $quote_source_c_element = $exported->createTextNode($quote['source']);
-        $quote_source_element->appendChild($quote_source_c_element);
+        $quote_source = unserialize($quote['source']);
+        
+        $source = array(
+            'URL' => $quote_source[0],
+            'open_in_new_page' => $quote_source[1]
+        );
+        
+        $quote_source_url_element = $exported->createElement('URL');
+        $quote_source_element->appendChild($quote_source_url_element);
+        
+        $quote_source_url = $exported->createTextNode($source['URL']);
+        $quote_source_url_element->appendChild($quote_source_url);
+        
+        $quote_source_behaviour_element = $exported->createElement('open_in_new_page');
+        $quote_source_element->appendChild($quote_source_behaviour_element);
+        
+        $quote_source_behaviour = $exported->createTextNode($source['open_in_new_page']);
+        $quote_source_behaviour_element->appendChild($quote_source_behaviour);
     }
     
     echo $exported->saveXML();
