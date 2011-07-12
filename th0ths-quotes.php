@@ -419,21 +419,25 @@ function th0ths_quotes_import_export()
             $import_quotes = new DOMDocument();
             $import_quotes->load($_FILES['import_quotes']['tmp_name']);
             
-            $xml_quotes = $import_quotes->getElementsByTagName("quote");
+            $xml_quotes = $import_quotes->getElementsByTagName('quote');
             
             $imported_quotes = array();
             $i = 0;
             
             foreach ($xml_quotes as $quote)
             {
-                $quoted = $quote->getElementsByTagName("quoted"); 
+                $quoted = $quote->getElementsByTagName('quoted'); 
                 $imported_quotes[$i]['quote'] = $quoted->item(0)->nodeValue;
                 
-                $owner = $quote->getElementsByTagName("owner");
+                $owner = $quote->getElementsByTagName('owner');
                 $imported_quotes[$i]['owner'] = $owner->item(0)->nodeValue;
                 
-                $source = $quote->getElementsByTagName("source");
-                $imported_quotes[$i]['source'] = $source->item(0)->nodeValue;
+                $source = $quote->getElementsByTagName('source');
+                
+                $source_url = $source->item(0)->getElementsByTagName('URL')->item(0)->nodeValue;
+                $source_behaviour = $source->item(0)->getElementsByTagName('open_in_new_page')->item(0)->nodeValue;
+                
+                $imported_quotes[$i]['source'] = serialize(array($source_url, $source_behaviour));
                 
                 $i = $i + 1;
             }
