@@ -95,6 +95,19 @@ function th0ths_quotes_upgrade_check()
         $wpdb->query("ALTER TABLE $th0ths_quotes_plugin_table ADD source VARCHAR(200);");
     }
     
+    # Check for existing quotes' source field
+    $existing_quotes = $wpdb->get_results("SELECT * FROM $th0ths_quotes_plugin_table", 'ARRAY_A');
+    
+    foreach ($existing_quotes as $quote)
+    {
+        if (!empty($quote['source']) && !@unserialize($quote['source']))
+        {
+            $new_source = serialize(array($quote['source'], ''));
+            
+            $wpdb->update($th0ths_quotes_plugin_table, array('source' => $new_source), array('id' => $quote['id']));
+        }
+    }
+    
     if ($current_version != $th0ths_quotes_plugin_version)
     {
         update_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
@@ -284,7 +297,7 @@ function th0ths_quotes_manage_quotes()
                                 <td class="quote"><?php echo $quote['quote']; ?></td>
                                 <td class="owner"><?php echo $quote['owner']; ?></td>
                                 
-                                <?php $source_array = unserialize($quote['source']); ?>
+                                <?php $source_array = @unserialize($quote['source']); ?>
                                 
                                 <td class="source"><?php if (th0ths_quotes_is_valid_source($source_array[0])) { ?><a title="<?php echo $source_array[0]; ?>" href="<?php echo $source_array[0]; ?>" target="_blank"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/link.png" /></a><?php } else {?><a title="No link"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/nolink.png" /></a><?php } ?></td>
                             </tr>
