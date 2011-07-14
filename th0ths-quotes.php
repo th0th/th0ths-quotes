@@ -465,6 +465,9 @@ function th0ths_quotes_import_export()
                 $owner = $quote->getElementsByTagName('owner');
                 $imported_quotes[$i]['owner'] = $owner->item(0)->nodeValue;
                 
+                $tags = $quote->getElementsByTagName('tags');
+                $imported_quotes[$i]['tags'] = $tags->item(0)->nodeValue;
+                
                 $source = $quote->getElementsByTagName('source');
                 
                 $source_url = $source->item(0)->getElementsByTagName('URL')->item(0)->nodeValue;
@@ -538,6 +541,12 @@ function th0ths_quotes_export_to_xml()
         
         $quote_owner_c_element = $exported->createTextNode($quote['owner']);
         $quote_owner_element->appendChild($quote_owner_c_element);
+        
+        $quote_tags_element = $exported->createElement('tags');
+        $quote_element->appendChild($quote_tags_element);
+        
+        $quote_tags_c_element = $exported->createTextNode(@implode(',', unserialize($quote['tags'])));
+        $quote_tags_element->appendChild($quote_tags_c_element);
         
         $quote_source_element = $exported->createElement('source');
         $quote_element->appendChild($quote_source_element);
