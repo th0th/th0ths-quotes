@@ -619,6 +619,7 @@ function th0ths_quotes_trash()
                                 <th><?php _e("ID", 'th0ths-quotes'); ?></th>
                                 <th><?php _e("Quote", 'th0ths-quotes'); ?></th>
                                 <th><?php _e("Owner", 'th0ths-quotes'); ?></th>
+                                <th><?php _e("Tags", 'th0ths-quotes'); ?></th>
                                 <th><?php _e("Source", 'th0ths-quotes'); ?></th>
                         </tr>
                         <?php foreach ($quotes as $quote) { ?>
@@ -627,6 +628,18 @@ function th0ths_quotes_trash()
                                 <td class="id"><?php echo $quote['id']; ?></td>
                                 <td class="quote"><?php echo $quote['quote']; ?></td>
                                 <td class="owner"><?php echo $quote['owner']; ?></td>
+                                
+                                <?php $tags = @implode(',', unserialize($quote['tags'])); ?>
+                                
+                                <td class="tags">
+                                    <a title="<?php echo $tags; ?>">
+                                        <?php if (!empty($tags)) { ?>
+                                        <img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/tags.png" />
+                                        <?php } else { ?>
+                                        <img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/notags.png" />
+                                        <?php } ?>
+                                    </a>
+                                </td>
                                 
                                 <?php $source_array = unserialize($quote['source']); ?>
                                 
