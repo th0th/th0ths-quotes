@@ -247,7 +247,7 @@ function th0ths_quotes_manage_quotes()
                     <span><?php _e("Tags", 'th0ths-quotes'); ?></span>
                     <div class="th0ths_quotes_cleanser"></div>
                     
-                    <input type="text" name="tags" value="<?php echo implode(',', unserialize($quote[0]['tags'])); ?>" />
+                    <input type="text" name="tags" value="<?php echo @implode(',', unserialize($quote[0]['tags'])); ?>" />
                     <div class="th0ths_quotes_cleanser"></div>
                     
                     <span><?php _e("Source", 'th0ths-quotes'); ?></span>
