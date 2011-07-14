@@ -388,6 +388,12 @@ function th0ths_quotes_add_new()
                 <input type="text" name="owner" />
                 <div class="th0ths_quotes_cleanser"></div>
                 
+                <span><?php _e("Tags", 'th0ths-quotes'); ?></span>
+                <div class="th0ths_quotes_cleanser"></div>
+                
+                <input type="text" name="tags" /><span class="description">(<?php _e("Seperate tags with comma", 'th0ths-qu0tes'); ?>)</span>
+                <div class="th0ths_quotes_cleanser"></div>
+                
                 <span><?php _e("Source", 'th0ths-quotes'); ?></span>
                 <div class="th0ths_quotes_cleanser"></div>
                 
