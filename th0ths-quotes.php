@@ -663,7 +663,7 @@ function th0ths_quotes_shortcode($atts)
                     'class' => 'th0ths_quotes_sc',
                     'id' => '',
                     'owner' => '',
-                    'tags' => ''
+                    'tag' => ''
                 ), $atts));
     
     /* if 'id' is set owner attribute will be ignored */
@@ -671,7 +671,7 @@ function th0ths_quotes_shortcode($atts)
     {
         if ($owner == '')
         {
-            if ($tags == '')
+            if ($tag == '')
             {
                 $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
             }
