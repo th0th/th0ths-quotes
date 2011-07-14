@@ -221,6 +221,7 @@ function th0ths_quotes_manage_quotes()
                     'id' => $_GET['id'],
                     'quote' => $_POST['quote'],
                     'owner' => $_POST['owner'],
+                    'tags' => serialize(explode(',', $_POST['tags'])),
                     'source' => serialize(array($_POST['source'], $_POST['open_in_new_page']))
                 );
                 
@@ -254,6 +255,12 @@ function th0ths_quotes_manage_quotes()
                     <div class="th0ths_quotes_cleanser"></div>
                     
                     <input type="text" name="owner" value="<?php echo $quote[0]['owner']; ?>" />
+                    <div class="th0ths_quotes_cleanser"></div>
+                    
+                    <span><?php _e("Tags", 'th0ths-quotes'); ?></span>
+                    <div class="th0ths_quotes_cleanser"></div>
+                    
+                    <input type="text" name="tags" value="<?php echo implode(',', unserialize($quote[0]['tags'])); ?>" />
                     <div class="th0ths_quotes_cleanser"></div>
                     
                     <span><?php _e("Source", 'th0ths-quotes'); ?></span>
@@ -348,6 +355,7 @@ function th0ths_quotes_add_new()
             $new_quote = array (
                 'quote' => $_POST['quote'],
                 'owner' => $_POST['owner'],
+                'tags' => serialize(explode(',', $_POST['tags'])),
                 'source' => serialize(array($_POST['source'], $_POST['open_in_new_page']))
             );
             
