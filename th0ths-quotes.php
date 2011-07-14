@@ -662,7 +662,8 @@ function th0ths_quotes_shortcode($atts)
     extract(shortcode_atts(array(
                     'class' => 'th0ths_quotes_sc',
                     'id' => '',
-                    'owner' => ''
+                    'owner' => '',
+                    'tags' => ''
                 ), $atts));
     
     /* if 'id' is set owner attribute will be ignored */
@@ -670,14 +671,46 @@ function th0ths_quotes_shortcode($atts)
     {
         if ($owner == '')
         {
-            $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+            if ($tags == '')
+            {
+                $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+            }
+            else
+            {
+                $pre_quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
+                
+                $quotes = array();
+                
+                foreach ($pre_quotes as $pre_quote)
+                {
+                    if (@unserialize($pre_quote['tags']))
+                    {
+                        if (in_array($tags, unserialize($pre_quote['tags'])))
+                        {
+                            $quotes[] = $pre_quote;
+                        }
+                    }
+                }
+            }
         }
         else
         {
             $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE owner = '$owner'", ARRAY_A);
         }
-
-    $quote = $quotes[array_rand($quotes)];
+    
+    if (!empty($quotes))
+    {
+        $quote = $quotes[array_rand($quotes)];
+    }
+    else
+    {
+        $quote = array(
+            'quote' => __("There is no quote with this tag.", 'th0ths-quotes'),
+            'owner' => __("Tux", 'th0ths-quotes'),
+            'source' => ''
+        );
+    }
+    
     }
     else
     {
@@ -690,7 +723,7 @@ function th0ths_quotes_shortcode($atts)
         else
         {
             $quote = array(
-                    'quote' => __("There is no such quote with this ID.", 'th0ths-quotes'),
+                    'quote' => __("No such quote with this ID.", 'th0ths-quotes'),
                     'owner' => __("Inspector Gadget", 'th0ths-quotes'),
                     'source' => ''
                 );
