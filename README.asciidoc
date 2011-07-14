@@ -26,11 +26,11 @@ You can display your quotes also in pages or posts using shortcode of the plugin
 
 You can narrow down your collection using `owner` parameter. Thus, a random quote will be chosen from quotes only with the specified owner. For example, `[th0ths_quotes owner=Buddha]` will show a random quote of quotes whose owner is 'Buddha'.
 
-=== Specify by id ===
+=== Specify by tag (Implemented in v0.93) ===
 
-You also can show one specific quote on a page or post. For this you can use `id` parameter. `[th0ths_quotes id=3]` will show only one quote id of which is 3.
+Now you can narrow down quotes that are used in shortcode by using tags. After adding a specific tag to quote in management menu, you can use `[th0ths_quotes tag=<tag here>]` to show quotes with the tag you specified.
 
-**NOTE:** id parameter supersedes owner parameter, that is, if an id is specified owner parameter will be ignored.
+**NOTE:** id parameter supersedes owner parameter, and owner parameter supersedes tag.
 
 == Installation ==
 

@@ -24,7 +24,11 @@ You can narrow down your collection using `owner` parameter. Thus, a random quot
 
 You also can show one specific quote on a page or post. For this you can use `id` parameter. `[th0ths_quotes id=3]` will show only one quote id of which is 3.
 
-**NOTE:** id parameter supersedes owner parameter, that is, if an id is specified owner parameter will be ignored.
+= Specify by tag (Implemented in v0.93) =
+
+Now you can narrow down quotes that are used in shortcode by using tags. After adding a specific tag to quote in management menu, you can use `[th0ths_quotes tag=<tag here>]` to show quotes with the tag you specified.
+
+**NOTE:** id parameter supersedes owner parameter, and owner parameter supersedes tag.
 
 == Installation ==
 
