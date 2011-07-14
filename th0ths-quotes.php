@@ -31,13 +31,12 @@ global $th0ths_quotes_plugin_table;
 global $th0ths_quotes_plugin_version;
 
 $th0ths_quotes_plugin_table = $wpdb->prefix . "th0ths_quotes";
-$th0ths_quotes_tags_table = $wpdb->prefix . "th0ths_quotes_tags";
 $th0ths_quotes_plugin_version = '0.92';
 
 /* Plugin activation function */
 function th0ths_quotes_activate()
 {
-    global $wpdb, $th0ths_quotes_plugin_table, $th0ths_quotes_tags_table, $th0ths_quotes_plugin_version;
+    global $wpdb, $th0ths_quotes_plugin_table, $th0ths_quotes_plugin_version;
     
     if($wpdb->get_var("SHOW TABLES LIKE '$th0ths_quotes_plugin_table'") != $th0ths_quotes_plugin_table)
     {
@@ -73,18 +72,6 @@ function th0ths_quotes_activate()
         }
         
         add_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
-    }
-    
-    if ($wpdb->get_var("SHOW TABLES LIKE '$th0ths_quotes_tags_table'") != $th0ths_quotes_tags_table)
-    {
-        $sql2 = "CREATE TABLE " . $th0ths_quotes_tags_table . " (
-            id INT(12) NOT NULL AUTO_INCREMENT,
-            tag VARCHAR(100) NOT NULL,
-            UNIQUE KEY id (id)
-        );";
-        
-        require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
     }
 }
 
