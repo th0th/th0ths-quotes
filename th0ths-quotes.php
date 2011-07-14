@@ -313,6 +313,7 @@ function th0ths_quotes_manage_quotes()
                                 <th><?php _e("Edit", 'th0ths-quotes'); ?></th>
                                 <th><?php _e("Quote", 'th0ths-quotes'); ?></th>
                                 <th><?php _e("Owner", 'th0ths-quotes'); ?></th>
+                                <th><?php _e("Tags", 'th0ths-quotes'); ?></th>
                                 <th><?php _e("Source", 'th0ths-quotes'); ?></th>
                             </tr>
                             <?php foreach ($quotes as $quote) { ?>
@@ -322,6 +323,18 @@ function th0ths_quotes_manage_quotes()
                                 <td class="edit"><a href="<?php echo add_query_arg(array("action" => "edit_quote", "id" => $quote['id']), admin_url() . "admin.php?page=th0ths-quotes"); ?>"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/edit.png" /></a></td>
                                 <td class="quote"><?php echo $quote['quote']; ?></td>
                                 <td class="owner"><?php echo $quote['owner']; ?></td>
+                                
+                                <?php $tags = @implode(',', unserialize($quote['tags'])); ?>
+                                
+                                <td class="tags">
+                                    <a title="<?php echo $tags; ?>">
+                                        <?php if (!empty($tags)) { ?>
+                                        <img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/tags.png" />
+                                        <?php } else { ?>
+                                        <img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/notags.png" />
+                                        <?php } ?>
+                                    </a>
+                                </td>
                                 
                                 <?php $source_array = @unserialize($quote['source']); ?>
                                 
