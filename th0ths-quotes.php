@@ -111,7 +111,7 @@ function th0ths_quotes_upgrade_check()
     
     if (!in_array('tags', $columns))
     {
-        $wpdb->query("ALTER TABLE $th0ths_quotes_plugin_table ADD source VARCHAR(255);");
+        $wpdb->query("ALTER TABLE $th0ths_quotes_plugin_table ADD tags VARCHAR(255);");
     }
     
     # Check for existing quotes' source field
