@@ -685,7 +685,7 @@ function th0ths_quotes_shortcode($atts)
                 {
                     if (@unserialize($pre_quote['tags']))
                     {
-                        if (in_array($tags, unserialize($pre_quote['tags'])))
+                        if (in_array($tag, unserialize($pre_quote['tags'])))
                         {
                             $quotes[] = $pre_quote;
                         }
