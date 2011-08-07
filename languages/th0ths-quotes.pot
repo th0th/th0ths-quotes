@@ -2,15 +2,45 @@
 # This file is distributed under the same license as the th0th's Quotes package.
 msgid ""
 msgstr ""
-"Project-Id-Version: th0th's Quotes 0.93\n"
+"Project-Id-Version: th0th's Quotes 0.95\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/th0ths-quotes\n"
-"POT-Creation-Date: 2011-07-14 23:35:13+00:00\n"
+"POT-Creation-Date: 2011-08-07 22:41:56+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2010-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: th0ths-quotes-widget.php:66 th0ths-quotes.php:708
+msgid "There is no quote with this tag/owner."
+msgstr ""
+
+#: th0ths-quotes-widget.php:67 th0ths-quotes.php:709
+msgid "Tux"
+msgstr ""
+
+#: th0ths-quotes-widget.php:76
+msgid "Quotes"
+msgstr ""
+
+#: th0ths-quotes-widget.php:104
+msgid "Title:"
+msgstr ""
+
+#: th0ths-quotes-widget.php:108
+msgid "Tag:"
+msgstr ""
+
+#: th0ths-quotes-widget.php:112
+msgid "Owner:"
+msgstr ""
+
+#: th0ths-quotes-widget.php:115
+msgid ""
+"Owner filter supersedes tag filter. So if 'owner' is entered 'tag' will be "
+"ignored."
+msgstr ""
 
 #: th0ths-quotes.php:141 th0ths-quotes.php:175
 msgid "Donate"
@@ -27,7 +57,7 @@ msgstr ""
 msgid "You can use Paypal button to donate."
 msgstr ""
 
-#. #-#-#-#-#  plugin.pot (th0th's Quotes 0.93)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (th0th's Quotes 0.95)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: th0ths-quotes.php:160
 msgid "th0th's Quotes"
@@ -170,28 +200,12 @@ msgstr ""
 msgid "Delete Selected Quotes Permanently"
 msgstr ""
 
-#: th0ths-quotes.php:708
-msgid "There is no quote with this tag."
-msgstr ""
-
-#: th0ths-quotes.php:709
-msgid "Tux"
-msgstr ""
-
 #: th0ths-quotes.php:726
 msgid "No such quote with this ID."
 msgstr ""
 
 #: th0ths-quotes.php:727
 msgid "Inspector Gadget"
-msgstr ""
-
-#: th0ths-quotes-widget.php:37
-msgid "Quotes"
-msgstr ""
-
-#: th0ths-quotes-widget.php:61
-msgid "Title:"
 msgstr ""
 
 #. Plugin URI of the plugin/theme

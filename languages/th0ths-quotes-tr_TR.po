@@ -4,14 +4,44 @@ msgid ""
 msgstr ""
 "Project-Id-Version: th0th's quotes 0.5\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/th0ths-quotes\n"
-"POT-Creation-Date: 2011-07-14 23:35:13+00:00\n"
-"PO-Revision-Date: 2011-07-15 02:41+0200\n"
+"POT-Creation-Date: 2011-08-07 22:41:56+00:00\n"
+"PO-Revision-Date: 2011-08-08 01:45+0200\n"
 "Last-Translator: H.Gökhan Sarı <th0th@returnfalse.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+
+#: th0ths-quotes-widget.php:66
+#: th0ths-quotes.php:708
+msgid "There is no quote with this tag/owner."
+msgstr "Bu etikete/sahibe sahip bir alıntı yok."
+
+#: th0ths-quotes-widget.php:67
+#: th0ths-quotes.php:709
+msgid "Tux"
+msgstr "Tux"
+
+#: th0ths-quotes-widget.php:76
+msgid "Quotes"
+msgstr "Alıntılar"
+
+#: th0ths-quotes-widget.php:104
+msgid "Title:"
+msgstr "Başlık:"
+
+#: th0ths-quotes-widget.php:108
+msgid "Tag:"
+msgstr "Etiket:"
+
+#: th0ths-quotes-widget.php:112
+msgid "Owner:"
+msgstr "Sahibi:"
+
+#: th0ths-quotes-widget.php:115
+msgid "Owner filter supersedes tag filter. So if 'owner' is entered 'tag' will be ignored."
+msgstr "Eğer 'sahip' filtresi tanımlanırsa 'etiket' filtresi göz ardı edilir."
 
 #: th0ths-quotes.php:141
 #: th0ths-quotes.php:175
@@ -26,7 +56,7 @@ msgstr "%sth0th's Quotes%s %sGPL%s lisansı ile yayınlanan özgür ve ücretsiz
 msgid "You can use Paypal button to donate."
 msgstr "Bağış yapmak için Paypal butonunu kullanabilirsiniz."
 
-#. #-#-#-#-#  plugin.pot (th0th's Quotes 0.93)  #-#-#-#-#
+#. #-#-#-#-#  plugin.pot (th0th's Quotes 0.95)  #-#-#-#-#
 #. Plugin Name of the plugin/theme
 #: th0ths-quotes.php:160
 msgid "th0th's Quotes"
@@ -190,14 +220,6 @@ msgstr "Seçilen Alıntıları Geri Getir"
 msgid "Delete Selected Quotes Permanently"
 msgstr "Seçilen Alıntıları Kalıcı Olarak Sil"
 
-#: th0ths-quotes.php:708
-msgid "There is no quote with this tag."
-msgstr "Bu etikete sahip bir alıntı yok."
-
-#: th0ths-quotes.php:709
-msgid "Tux"
-msgstr "Tux"
-
 #: th0ths-quotes.php:726
 msgid "No such quote with this ID."
 msgstr "Bu ID'ye sahip bir alıntı yok."
@@ -205,14 +227,6 @@ msgstr "Bu ID'ye sahip bir alıntı yok."
 #: th0ths-quotes.php:727
 msgid "Inspector Gadget"
 msgstr "Müfettiş Gadget"
-
-#: th0ths-quotes-widget.php:37
-msgid "Quotes"
-msgstr "Alıntılar"
-
-#: th0ths-quotes-widget.php:61
-msgid "Title:"
-msgstr "Başlık:"
 
 #. Plugin URI of the plugin/theme
 msgid "https://returnfalse.net/log/th0ths-quotes-wordpress-plugin/"
