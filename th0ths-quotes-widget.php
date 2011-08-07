@@ -112,6 +112,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
             <label for="<?php echo $this->get_field_id('owner'); ?>"><?php _e('Owner:'); ?></label> 
             <input class="widefat" id="<?php echo $this->get_field_id('owner'); ?>" name="<?php echo $this->get_field_name('owner'); ?>" type="text" value="<?php echo $owner; ?>" />
         </p>
+        <p class="description"><?php _e("Owner filter supersedes tag filter. So if 'owner' is entered 'tag' will be ignored."); ?></p>
         <?php 
     }
 
