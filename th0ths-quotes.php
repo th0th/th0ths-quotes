@@ -705,7 +705,7 @@ function th0ths_quotes_shortcode($atts)
     else
     {
         $quote = array(
-            'quote' => __("There is no quote with this tag.", 'th0ths-quotes'),
+            'quote' => __("There is no quote with this tag/owner.", 'th0ths-quotes'),
             'owner' => __("Tux", 'th0ths-quotes'),
             'source' => ''
         );
