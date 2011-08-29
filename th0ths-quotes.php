@@ -318,7 +318,7 @@ function th0ths_quotes_manage_quotes()
                                 <td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
                                 <td class="id"><?php echo $quote['id']; ?></td>
                                 <td class="edit"><a href="<?php echo add_query_arg(array("action" => "edit_quote", "id" => $quote['id']), admin_url() . "admin.php?page=th0ths-quotes"); ?>"><img src="<?php echo WP_PLUGIN_URL; ?>/th0ths-quotes/images/edit.png" /></a></td>
-                                <td class="quote"><?php echo $quote['quote']; ?></td>
+                                <td class="quote"><?php echo nl2br($quote['quote']); ?></td>
                                 <td class="owner"><?php echo $quote['owner']; ?></td>
                                 
                                 <?php $tags = @implode(',', unserialize($quote['tags'])); ?>
@@ -636,7 +636,7 @@ function th0ths_quotes_trash()
                         <tr>
                                 <td class="sendToTrash"><input type="checkbox" class="quoteCB" name="quoteIDs[]" value="<?php echo $quote['id']; ?>" /></td>
                                 <td class="id"><?php echo $quote['id']; ?></td>
-                                <td class="quote"><?php echo $quote['quote']; ?></td>
+                                <td class="quote"><?php echo nl2br($quote['quote']); ?></td>
                                 <td class="owner"><?php echo $quote['owner']; ?></td>
                                 
                                 <?php $tags = @implode(',', unserialize($quote['tags'])); ?>
@@ -743,7 +743,7 @@ function th0ths_quotes_shortcode($atts)
     ?>
         <div class="<?php echo $class; ?>">
             <blockquote>
-                <div id="th0ths_quotes_sc_quote" style="font-style: oblique;"><?php echo $quote['quote']; ?></div>
+                <div id="th0ths_quotes_sc_quote" style="font-style: oblique;"><?php echo nl2br($quote['quote']); ?></div>
                 <div id="th0ths_quotes_sc_owner" style="text-align: right;">
                     
                     <?php $source_array = unserialize($quote['source']); ?>
