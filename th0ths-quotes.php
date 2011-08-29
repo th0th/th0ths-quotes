@@ -42,7 +42,7 @@ function th0ths_quotes_activate()
     {
         $sql = "CREATE TABLE " . $th0ths_quotes_plugin_table . " (
           id INT(12) NOT NULL AUTO_INCREMENT,
-          quote VARCHAR(255) NOT NULL,
+          quote TEXT NOT NULL,
           owner VARCHAR(100) NOT NULL,
           status INT(4) DEFAULT '1',
           source VARCHAR(200),
@@ -112,6 +112,16 @@ function th0ths_quotes_upgrade_check()
             
             $wpdb->update($th0ths_quotes_plugin_table, array('source' => $new_source), array('id' => $quote['id']));
         }
+    }
+    
+    // Convert quote field to TEXT for v <= 0.95
+    
+    $quote_field = $wpdb->get_results("SHOW COLUMNS FROM $th0ths_quotes_plugin_table WHERE Field = 'quote'", 'ARRAY_A');
+    $quote_field = $quote_field[0]['Type'];
+    
+    if ($quote_field != 'text')
+    {
+        $wpdb->query("ALTER TABLE $th0ths_quotes_plugin_table CHANGE quote quote TEXT;");
     }
     
     if ($current_version != $th0ths_quotes_plugin_version)
