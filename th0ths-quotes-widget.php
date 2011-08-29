@@ -74,7 +74,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
             echo $before_title . $title . $after_title; }
         else {
                 echo $before_title . __("Quotes" , 'th0ths-quotes') . $after_title; } ?>
-        <div id="th0ths_quotes_widget_quote" style="font-style: oblique;"><?php echo nl2br($quote['quote']); ?></div>
+        <div id="th0ths_quotes_widget_quote" style="font-style: oblique;"><?php echo th0ths_quotes_display_quote($quote['quote']); ?></div>
         <div id="th0ths_quotes_widget_owner" style="text-align: right;">
                       
         <?php $source_array = unserialize($quote['source']); ?>
