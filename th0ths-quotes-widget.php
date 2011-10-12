@@ -91,6 +91,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['tag'] = strip_tags($new_instance['tag']);
         $instance['owner'] = strip_tags($new_instance['owner']);
+        $instance['show_latest_quote'] = strip_tags($new_instance['show_latest_quote']);
         
         return $instance;
     }
@@ -99,6 +100,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
         $title = esc_attr($instance['title']);
         $tag = esc_attr($instance['tag']);
         $owner = esc_attr($instance['owner']);
+        $show_latest_quote = esc_attr($instance['show_latest_quote']);
         ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
@@ -113,6 +115,10 @@ class th0ths_Quotes_Widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id('owner'); ?>" name="<?php echo $this->get_field_name('owner'); ?>" type="text" value="<?php echo $owner; ?>" />
         </p>
         <p class="description"><?php _e("Owner filter supersedes tag filter. So if 'owner' is entered 'tag' will be ignored."); ?></p>
+        <p>
+            <input type="checkbox" name="<?php echo $this->get_field_name('show_latest_quote'); ?>" value="true" /><?php _e('Show latest quote'); ?>
+            <?php var_dump($show_latest_quote); ?>
+        </p>
         <?php 
     }
 
