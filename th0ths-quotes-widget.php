@@ -27,38 +27,53 @@ class th0ths_Quotes_Widget extends WP_Widget {
         global $wpdb, $th0ths_quotes_plugin_table;
         extract( $args );
         $title = apply_filters('widget_title', $instance['title']);
-        if ($instance['owner'] == '')
+        if ($instance['show_latest_quote'] == 'true')
         {
-            if ($instance['tag'] == '')
+            $quotes = array_pop($wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, 'ARRAY_A'));
+        }
+        else
+        {
+            if ($instance['owner'] == '')
             {
-                $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
-            }
-            else
-            {
-                $pre_quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, ARRAY_A);
-                
-                $quotes = array();
-                
-                foreach ($pre_quotes as $pre_quote)
+                if ($instance['tag'] == '')
                 {
-                    if (@unserialize($pre_quote['tags']))
+                    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, 'ARRAY_A');
+                }
+                else
+                {
+                    $pre_quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, 'ARRAY_A');
+                    
+                    $quotes = array();
+                    
+                    foreach ($pre_quotes as $pre_quote)
                     {
-                        if (in_array($instance['tag'], unserialize($pre_quote['tags'])))
+                        if (@unserialize($pre_quote['tags']))
                         {
-                            $quotes[] = $pre_quote;
+                            if (in_array($instance['tag'], unserialize($pre_quote['tags'])))
+                            {
+                                $quotes[] = $pre_quote;
+                            }
                         }
                     }
                 }
             }
-        }
-        else
-        {
-            $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE owner = '" . $instance['owner'] . "'", ARRAY_A);
+            else
+            {
+                $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE owner = '" . $instance['owner'] . "'", ARRAY_A);
+            }
         }
         
+        // Check if there is such a quote.
         if (!empty($quotes))
         {
-            $quote = $quotes[array_rand($quotes)];
+            if ($instance['show_latest_quote'] == 'true')
+            {
+                $quote = $quotes;
+            }
+            else
+            {
+                $quote = $quotes[array_rand($quotes)];
+            }
         }
         else
         {
@@ -91,6 +106,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
         $instance['title'] = strip_tags($new_instance['title']);
         $instance['tag'] = strip_tags($new_instance['tag']);
         $instance['owner'] = strip_tags($new_instance['owner']);
+        $instance['show_latest_quote'] = strip_tags($new_instance['show_latest_quote']);
         
         return $instance;
     }
@@ -99,6 +115,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
         $title = esc_attr($instance['title']);
         $tag = esc_attr($instance['tag']);
         $owner = esc_attr($instance['owner']);
+        $show_latest_quote = esc_attr($instance['show_latest_quote']);
         ?>
         <p>
             <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
@@ -113,6 +130,9 @@ class th0ths_Quotes_Widget extends WP_Widget {
             <input class="widefat" id="<?php echo $this->get_field_id('owner'); ?>" name="<?php echo $this->get_field_name('owner'); ?>" type="text" value="<?php echo $owner; ?>" />
         </p>
         <p class="description"><?php _e("Owner filter supersedes tag filter. So if 'owner' is entered 'tag' will be ignored."); ?></p>
+        <p>
+            <input type="checkbox" name="<?php echo $this->get_field_name('show_latest_quote'); ?>" value="true" <?php if ($show_latest_quote == 'true') { ?>checked="checked"<?php }?>/><?php _e('Show latest quote'); ?>
+        </p>
         <?php 
     }
 
