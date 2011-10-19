@@ -116,8 +116,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
         </p>
         <p class="description"><?php _e("Owner filter supersedes tag filter. So if 'owner' is entered 'tag' will be ignored."); ?></p>
         <p>
-            <input type="checkbox" name="<?php echo $this->get_field_name('show_latest_quote'); ?>" value="true" /><?php _e('Show latest quote'); ?>
-            <?php var_dump($show_latest_quote); ?>
+            <input type="checkbox" name="<?php echo $this->get_field_name('show_latest_quote'); ?>" value="true" <?php if ($show_latest_quote == 'true') { ?>checked="checked"<?php }?>/><?php _e('Show latest quote'); ?>
         </p>
         <?php 
     }
