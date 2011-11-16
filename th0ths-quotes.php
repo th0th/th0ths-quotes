@@ -739,7 +739,8 @@ function th0ths_quotes_shortcode($atts)
                 );
         }
     }
-
+    
+    ob_start();
     ?>
         <div class="<?php echo $class; ?>">
             <blockquote>
@@ -754,6 +755,8 @@ function th0ths_quotes_shortcode($atts)
             </blockquote>
         </div>
     <?php
+    
+    return ob_get_clean();
 }
 
 function th0ths_quotes_is_valid_source($url)
