@@ -665,6 +665,7 @@ function th0ths_quotes_trash()
         <?php
 }
 
+/* shortcode function */
 function th0ths_quotes_shortcode($atts)
 {
     global $wpdb, $th0ths_quotes_plugin_table;
