@@ -32,6 +32,10 @@ Now you can narrow down quotes that are used in shortcode by using tags. After a
 
 **NOTE:** id parameter supersedes owner parameter, and owner parameter supersedes tag.
 
+=== Styling quote displayed by shortcode ===
+
+You can define custom style for the division on which quote displayed using shortcode to match your theme or your needs. Shortcode has `class` parameter which will set a css class for the division that quote will be displayed in. Using this class you can set a custom displaying style. For example, `[th0ths_quotes class=quote_div]` will cause the output `<div class="quote_div">...</div>` so that you can define custom width, height, etc. for your quote displaying division.
+
 == Installation ==
 
 1. Upload th0ths-quotes folder to your `wp-content/plugins/` directory.
