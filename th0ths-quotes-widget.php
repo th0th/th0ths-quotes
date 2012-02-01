@@ -29,7 +29,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
         $title = apply_filters('widget_title', $instance['title']);
         if ($instance['show_latest_quote'] == 'true')
         {
-            $quotes = array_pop($wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, 'ARRAY_A'));
+            $quotes = array_pop($wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status='1'", 'ARRAY_A'));
         }
         else
         {
@@ -37,11 +37,11 @@ class th0ths_Quotes_Widget extends WP_Widget {
             {
                 if ($instance['tag'] == '')
                 {
-                    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, 'ARRAY_A');
+                    $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status='1'", 'ARRAY_A');
                 }
                 else
                 {
-                    $pre_quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table, 'ARRAY_A');
+                    $pre_quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status='1'", 'ARRAY_A');
                     
                     $quotes = array();
                     
@@ -59,7 +59,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
             }
             else
             {
-                $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE owner = '" . $instance['owner'] . "'", ARRAY_A);
+                $quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE status='1' AND owner = '" . $instance['owner'] . "'", ARRAY_A);
             }
         }
         
