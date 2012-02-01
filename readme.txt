@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, sidebar, shortcode, quote
 Requires at least: 3.1.2
 Tested up to: 3.2.1
-Stable tag: 0.98
+Stable tag: 1.0
 
 A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
 
@@ -30,6 +30,10 @@ Now you can narrow down quotes that are used in shortcode by using tags. After a
 
 **NOTE:** id parameter supersedes owner parameter, and owner parameter supersedes tag.
 
+= Styling quote displayed by shortcode =
+
+You can define custom style for the division on which quote displayed using shortcode to match your theme or your needs. Shortcode has `class` parameter which will set a css class for the division that quote will be displayed in. Using this class you can set a custom displaying style. For example, `[th0ths_quotes class=quote_div]` will cause the output `<div class="quote_div">...</div>` so that you can define custom width, height, etc. for your quote displaying division.
+
 == Installation ==
 
 1. Upload th0ths-quotes folder to your `wp-content/plugins/` directory.
@@ -53,6 +57,9 @@ The plugin uses its own database table to store quotes. And Wordpress doesn't ha
 6. Quote on a page with shortcode.
 
 == Changelog ==
+
+= 1.0 =
+* Fix displaying quotes from trash bug.
 
 = 0.98 =
 * Fix shortcode's output position.
