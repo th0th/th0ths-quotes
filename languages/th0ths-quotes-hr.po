@@ -1,0 +1,248 @@
+# Copyright (C) 2010 th0th's quotes
+# This file is distributed under the same license as the th0th's quotes package.
+msgid ""
+msgstr ""
+"Project-Id-Version: th0th's quotes 0.5\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/th0ths-quotes\n"
+"POT-Creation-Date: 2011-08-07 22:41:56+00:00\n"
+"PO-Revision-Date: 2012-02-15 11:43+0100\n"
+"Last-Translator: Vinko Prelac <vinko.prelac@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: th0ths-quotes-widget.php:66
+#: th0ths-quotes.php:708
+msgid "There is no quote with this tag/owner."
+msgstr "Ne postoji citat s navedenom oznakom ili vlasnikom."
+
+#: th0ths-quotes-widget.php:67
+#: th0ths-quotes.php:709
+msgid "Tux"
+msgstr "Tux"
+
+#: th0ths-quotes-widget.php:76
+msgid "Quotes"
+msgstr "Citati"
+
+#: th0ths-quotes-widget.php:104
+msgid "Title:"
+msgstr "Naslov:"
+
+#: th0ths-quotes-widget.php:108
+msgid "Tag:"
+msgstr "Oznaka:"
+
+#: th0ths-quotes-widget.php:112
+msgid "Owner:"
+msgstr "Vlasnik:"
+
+#: th0ths-quotes-widget.php:115
+msgid "Owner filter supersedes tag filter. So if 'owner' is entered 'tag' will be ignored."
+msgstr "Filtriranje po vlasniku nadjačava filtriranje po oznaci. Ukoliko je unesen vlasnik, oznaka će biti ignorirana."
+
+#: th0ths-quotes.php:141
+#: th0ths-quotes.php:175
+msgid "Donate"
+msgstr "Donacija"
+
+#: th0ths-quotes.php:142
+msgid "%sth0th's Quotes%s is a free <i>(both free as in beer and freedom)</i> plugin released under terms of %sGPL%s. However, if you liked this project you can support its development by a donation."
+msgstr "%sth0th's Quotes%s je besplatan i slobodan dodatak izdan pod %sGPL%s licencom. Ukoliko vam se sviđa ovaj projekt, možete pomoći razvoj svojom donacijom."
+
+#: th0ths-quotes.php:151
+msgid "You can use Paypal button to donate."
+msgstr "Možete iskoristiti PayPal gumb da biste uplatili donaciju."
+
+#. #-#-#-#-#  plugin.pot (th0th's Quotes 0.95)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: th0ths-quotes.php:160
+msgid "th0th's Quotes"
+msgstr "th0th's Quotes"
+
+#: th0ths-quotes.php:163
+#: th0ths-quotes.php:290
+msgid "Manage Quotes"
+msgstr "Upravljanje citatima"
+
+#: th0ths-quotes.php:166
+#: th0ths-quotes.php:291
+msgid "Add New"
+msgstr "Dodaj novi"
+
+#: th0ths-quotes.php:169
+#: th0ths-quotes.php:431
+msgid "Import/Export"
+msgstr "Uvoz/Izvoz"
+
+#: th0ths-quotes.php:172
+#: th0ths-quotes.php:612
+msgid "Trash"
+msgstr "Smeće"
+
+#: th0ths-quotes.php:200
+#: th0ths-quotes.php:366
+msgid "You should fill both quote and owner sections."
+msgstr "Trebali biste unijeti i citat i vlasnika."
+
+#: th0ths-quotes.php:219
+#: th0ths-quotes.php:231
+msgid "Edit Quote"
+msgstr "Uredi citat"
+
+#: th0ths-quotes.php:220
+msgid "Quote is successfully updated."
+msgstr "Citat je uspješno ažuriran."
+
+#: th0ths-quotes.php:222
+msgid "Click %shere%s to go to quote management page."
+msgstr "Kliknite %shere%s za povratak na stranicu sa upravljanjem citatima."
+
+#: th0ths-quotes.php:235
+#: th0ths-quotes.php:301
+#: th0ths-quotes.php:387
+#: th0ths-quotes.php:620
+msgid "Quote"
+msgstr "Citat"
+
+#: th0ths-quotes.php:241
+#: th0ths-quotes.php:302
+#: th0ths-quotes.php:393
+#: th0ths-quotes.php:621
+msgid "Owner"
+msgstr "Vlasnik"
+
+#: th0ths-quotes.php:247
+#: th0ths-quotes.php:303
+#: th0ths-quotes.php:399
+#: th0ths-quotes.php:622
+msgid "Tags"
+msgstr "Oznake"
+
+#: th0ths-quotes.php:253
+#: th0ths-quotes.php:304
+#: th0ths-quotes.php:405
+#: th0ths-quotes.php:623
+msgid "Source"
+msgstr "Izvor"
+
+#: th0ths-quotes.php:258
+#: th0ths-quotes.php:408
+msgid "Optional"
+msgstr "Opcionalno"
+
+#: th0ths-quotes.php:261
+#: th0ths-quotes.php:411
+msgid "Open source link in new page"
+msgstr "Otvori izvor u novoj stranici"
+
+#: th0ths-quotes.php:264
+msgid "Submit"
+msgstr "Spremi"
+
+#: th0ths-quotes.php:265
+msgid "Go back"
+msgstr "Natrag"
+
+#: th0ths-quotes.php:274
+#: th0ths-quotes.php:333
+msgid "Send Selected Quotes to Trash"
+msgstr "Pošalji odabrane citate u smeće"
+
+#: th0ths-quotes.php:299
+#: th0ths-quotes.php:619
+msgid "ID"
+msgstr "ID"
+
+#: th0ths-quotes.php:300
+msgid "Edit"
+msgstr "Uredi"
+
+#: th0ths-quotes.php:348
+msgid "Add New Quote"
+msgstr "Dodaj novi citat"
+
+#: th0ths-quotes.php:353
+#: th0ths-quotes.php:414
+msgid "Add"
+msgstr "Dodaj"
+
+#: th0ths-quotes.php:375
+msgid "New quote is successfully added to collection."
+msgstr "Novi citat je uspješno dodan u kolekciju."
+
+#: th0ths-quotes.php:377
+msgid "Click %shere%s to go to quote management page or %shere%s to add a new quote."
+msgstr "Kliknite %shere%s za upravljanje citatima ili %shere%s za dodavanje novog citata."
+
+#: th0ths-quotes.php:402
+msgid "Seperate tags with comma"
+msgstr "Razdvojite oznake zarezom"
+
+#: th0ths-quotes.php:439
+msgid "You should select a quote file to import quotes."
+msgstr "Molimo odaberite datoteku citata za uvoz citata."
+
+#: th0ths-quotes.php:448
+msgid "You can import quotes only from an XML file."
+msgstr "Citate možete uvesti iz XML datoteke."
+
+#: th0ths-quotes.php:486
+msgid "Quotes are imported. You can see new quotes in 'Manage Quotes' page."
+msgstr "Citati su uvezeni. Nove citate možete vidjeti na stranici 'Upravljanje citatima'."
+
+#: th0ths-quotes.php:493
+#: th0ths-quotes.php:499
+msgid "Import Quotes"
+msgstr "Uvoz citata"
+
+#: th0ths-quotes.php:496
+msgid "Filename"
+msgstr "Datoteka"
+
+#: th0ths-quotes.php:502
+msgid "Export Quotes"
+msgstr "Izvoz citata"
+
+#: th0ths-quotes.php:504
+msgid "Click here to export quotes"
+msgstr "Kliknite ovdje za izvoz citata"
+
+#: th0ths-quotes.php:585
+#: th0ths-quotes.php:651
+msgid "Restore Selected Quotes"
+msgstr "Vraćanje odabranih citata"
+
+#: th0ths-quotes.php:595
+#: th0ths-quotes.php:652
+msgid "Delete Selected Quotes Permanently"
+msgstr "Trajno brisanje označenih citata"
+
+#: th0ths-quotes.php:726
+msgid "No such quote with this ID."
+msgstr "Ne postoji citat s tom identifikacijskom oznakom."
+
+#: th0ths-quotes.php:727
+msgid "Inspector Gadget"
+msgstr "Inspector Gadget"
+
+#. Plugin URI of the plugin/theme
+msgid "https://returnfalse.net/log/th0ths-quotes-wordpress-plugin/"
+msgstr "https://returnfalse.net/log/th0ths-quotes-wordpress-plugin/"
+
+#. Description of the plugin/theme
+msgid "A plugin that enables you to display a random quote from your collection on sidebar, posts and pages."
+msgstr "Dodatak koji vam omogućuje prikaz nasumičnih citata iz vaše kolekcije u sidebaru, postovima i stranicama."
+
+#. Author of the plugin/theme
+msgid "Hüseyin Gökhan Sarı"
+msgstr "Hüseyin Gökhan Sarı"
+
+#. Author URI of the plugin/theme
+msgid "http://returnfalse.net"
+msgstr "http://returnfalse.net"
+
+#~ msgid "th0th's quotes"
+#~ msgstr "th0th's quotes"
