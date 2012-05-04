@@ -3,8 +3,8 @@ Contributors: th0th
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7D75SD2JLPCMQ
 Tags: widget, sidebar, shortcode, quote
 Requires at least: 3.1.2
-Tested up to: 3.3.1
-Stable tag: 1.2
+Tested up to: 3.3.2
+Stable tag: 1.25
 
 A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
 
@@ -57,6 +57,9 @@ The plugin uses its own database table to store quotes. And Wordpress doesn't ha
 6. Quote on a page with shortcode.
 
 == Changelog ==
+
+= 1.25 =
+* Some styling.
 
 = 1.2 =
 * Update plugin homepage so that users can reach the blog post.
