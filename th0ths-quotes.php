@@ -161,6 +161,9 @@ function th0ths_quotes_add_administration_menus()
     
     /* add trash submenu item */
     add_submenu_page("th0ths-quotes", __("Trash", 'th0ths-quotes'), __("Trash", 'th0ths-quotes'), "manage_options", "th0ths-quotes-trash", "th0ths_quotes_trash");
+    
+    /* add options submenu item */
+    add_submenu_page("th0ths-quotes", __("Options", 'th0ths-quotes'), __("Options", 'th0ths-quotes'), "manage_options", "th0ths-quotes-options", "th0ths_quotes_options");
 }
 
 /* Adding CSS */
@@ -641,6 +644,17 @@ function th0ths_quotes_trash()
             </form>
         </div>
         <?php
+}
+
+/* options page */
+function th0ths_quotes_options() {
+	global $wpdb;
+	
+	?>
+    <div class="wrap">
+        <h2><?php _e("Options", 'th0ths-quotes'); ?></h2>
+	</div>
+	<?php
 }
 
 /* shortcode function */
