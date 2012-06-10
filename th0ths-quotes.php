@@ -726,30 +726,15 @@ function th0ths_quotes_options() {
 }
 
 /* generate twitter button */
-function th0ths_quotes_twitter_button($quote_id) {
+function th0ths_quotes_twitter_button($text) {
 	global $wpdb, $th0ths_quotes_plugin_table;
 
 	$options = get_option('th0ths_quotes_options');
 
-	$quotes = $wpdb->get_results("SELECT * FROM " . $th0ths_quotes_plugin_table . " WHERE id = '$quote_id'", ARRAY_A);
-	
-	if (!empty($quotes) && $quotes[0]['status'] == 1)
-	{
-		$quote = $quotes[0];
-	}
-	else
-	{
-		$quote = array(
-				'quote' => __("No such quote with this ID.", 'th0ths-quotes'),
-				'owner' => __("Inspector Gadget", 'th0ths-quotes'),
-				'source' => ''
-			);
-	}
-
 	// Start generating button.
 	flush();
 	ob_start();
-	?><a href="https://twitter.com/share" class="twitter-share-button" data-text="<?php echo $quote['quote'] . " -" . $quote['owner']; ?>"<?php
+	?><a href="https://twitter.com/share" class="twitter-share-button" data-text="<?php echo $text; ?>"<?php
 
 	if ( !$options['twitter']['show_count'] ) {
 		?> data-count="none"<?php
@@ -758,7 +743,7 @@ function th0ths_quotes_twitter_button($quote_id) {
 		?> data-via="<?php echo $options['twitter']['via']; ?>"<?php
 	}
 	if ( $options['twitter']['hashtag'] ) {
-		?> data-hashtags="tagx"="<?php echo $options['twitter']['hashtag']; ?>"<?php
+		?> data-hashtags="<?php echo $options['twitter']['hashtag']; ?>"<?php
 	}
 
 	?>>Tweet</a><?php

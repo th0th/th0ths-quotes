@@ -25,6 +25,9 @@ class th0ths_Quotes_Widget extends WP_Widget {
 
 	function widget($args, $instance) {
 		global $wpdb, $th0ths_quotes_plugin_table;
+
+		$options = get_option('th0ths_quotes_options');
+
 		extract( $args );
 		$title = apply_filters('widget_title', $instance['title']);
 		if ($instance['show_latest_quote'] == 'true')
@@ -90,7 +93,7 @@ class th0ths_Quotes_Widget extends WP_Widget {
 		else {
 				echo $before_title . __("Quotes" , 'th0ths-quotes') . $after_title; } ?>
 		<div id="th0ths_quotes_widget_quote" style="font-style: oblique;"><?php echo th0ths_quotes_display_quote($quote['quote']); ?></div>
-		<div id="th0ths_quotes_widget_owner" style="text-align: right;">
+		<div id="th0ths_quotes_widget_owner" style="float: right;">
 					  
 		<?php $source_array = unserialize($quote['source']); ?>
 					  
@@ -99,6 +102,12 @@ class th0ths_Quotes_Widget extends WP_Widget {
 		<?php } else  { ?>
 			-<?php echo $quote['owner']; } ?>
 		</div>
+		<?php if ( $options['twitter']['enabled'] ) { ?>
+			<div id="th0ths_quotes_widget_social" style="float: left;">
+				<?php echo th0ths_quotes_twitter_button(th0ths_quotes_display_quote($quote['quote']) . " -" . $quote['owner']); ?>
+			</div>
+			<div style="clear: both;"></div>
+		<?php } ?>
 		<?php echo $after_widget; }
 
 	function update($new_instance, $old_instance) {
