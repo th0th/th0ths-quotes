@@ -2,9 +2,9 @@
 
 /*
 Plugin Name: th0th's Quotes
-Plugin URI: http://returnfalse.net/log/th0ths-quotes-wordpress-plugin/
+Plugin URI: http://code.returnfalse.net/shop/th0ths-quotes/
 Description: A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
-Version: 1.25
+Version: 2.0
 Author: Hüseyin Gökhan Sarı
 Author URI: http://returnfalse.net
 License: GPL3
@@ -31,7 +31,7 @@ global $th0ths_quotes_plugin_table;
 global $th0ths_quotes_plugin_version;
 
 $th0ths_quotes_plugin_table = $wpdb->prefix . "th0ths_quotes";
-$th0ths_quotes_plugin_version = '1.25';
+$th0ths_quotes_plugin_version = '2.0';
 
 /* Plugin activation function */
 function th0ths_quotes_activate()
@@ -123,6 +123,19 @@ function th0ths_quotes_upgrade_check()
 		$wpdb->query("ALTER TABLE $th0ths_quotes_plugin_table CHANGE quote quote TEXT;");
 	}
 	
+	if ( !get_option('th0ths_quotes_options')) {
+		$options = array();
+
+		$options['twitter'] = array(
+			'enabled' => ( $_POST['twitter_enabled'] == 'yes' ) ? true: false,
+			'show_count' => ( $_POST['twitter_show_count'] == 'yes' ) ? true: false,
+			'via' => ( empty($_POST['twitter_via']) ) ? false: $_POST['twitter_via'],
+			'hashtag' => ( empty($_POST['twitter_hashtag']) ) ? false: $_POST['twitter_hashtag']
+		);
+
+		add_option('th0ths_quotes_options', $options);
+	}
+
 	if ($current_version != $th0ths_quotes_plugin_version)
 	{
 		update_option("th0ths_quotes_version", $th0ths_quotes_plugin_version);
@@ -703,16 +716,16 @@ function th0ths_quotes_options() {
 		<?php
 	}
 	else {
-		$th0ths_quotes_options = array();
+		$options = array();
 
-		$th0ths_quotes_options['twitter'] = array(
+		$options['twitter'] = array(
 			'enabled' => ( $_POST['twitter_enabled'] == 'yes' ) ? true: false,
 			'show_count' => ( $_POST['twitter_show_count'] == 'yes' ) ? true: false,
 			'via' => ( empty($_POST['twitter_via']) ) ? false: $_POST['twitter_via'],
 			'hashtag' => ( empty($_POST['twitter_hashtag']) ) ? false: $_POST['twitter_hashtag']
 		);
 
-		update_option('th0ths_quotes_options', $th0ths_quotes_options);
+		update_option('th0ths_quotes_options', $options);
 
 		?>
 		<div class="wrap">
