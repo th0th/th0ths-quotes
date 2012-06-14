@@ -3,7 +3,7 @@ Contributors: th0th
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=7D75SD2JLPCMQ
 Tags: widget, sidebar, shortcode, quote
 Requires at least: 3.1.2
-Tested up to: 3.3.2
+Tested up to: 3.4
 Stable tag: 1.25
 
 A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
