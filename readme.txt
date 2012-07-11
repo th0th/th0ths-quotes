@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: widget, sidebar, shortcode, quote
 Requires at least: 3.1.2
 Tested up to: 3.4
-Stable tag: 1.25
+Stable tag: 2.01
 
 A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
 
@@ -57,6 +57,12 @@ The plugin uses its own database table to store quotes. And Wordpress doesn't ha
 6. Quote on a page with shortcode.
 
 == Changelog ==
+
+= 2.01 =
+* Add donation page.
+
+= 2.0 =
+* Enable sharing quotes on twitter.
 
 = 1.25 =
 * Some styling.
