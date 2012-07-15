@@ -2,9 +2,9 @@
 
 /*
 Plugin Name: th0th's Quotes
-Plugin URI: http://code.returnfalse.net/shop/th0ths-quotes/
+Plugin URI: https://github.com/th0th/th0ths-quotes
 Description: A plugin that enables you to display a random quote from your collection on sidebar, posts and pages.
-Version: 2.01
+Version: 2.02
 Author: Hüseyin Gökhan Sarı
 Author URI: http://returnfalse.net
 License: GPL3
@@ -31,7 +31,7 @@ global $th0ths_quotes_plugin_table;
 global $th0ths_quotes_plugin_version;
 
 $th0ths_quotes_plugin_table = $wpdb->prefix . "th0ths_quotes";
-$th0ths_quotes_plugin_version = '2.01';
+$th0ths_quotes_plugin_version = '2.02';
 
 /* Plugin activation function */
 function th0ths_quotes_activate()
